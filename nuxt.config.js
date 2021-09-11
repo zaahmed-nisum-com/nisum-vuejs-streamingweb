@@ -41,7 +41,7 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
-    dirs: ['~/components', '~/components/cards'],
+    dirs: ['~/components', '~/components/cards', '~/components/forms/content'],
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
