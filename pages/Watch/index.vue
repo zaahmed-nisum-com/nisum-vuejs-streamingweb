@@ -1,13 +1,9 @@
 <template>
-    
+  <h2>watch</h2>
 </template>
 
 <script>
-export default {
-    
-}
+export default {}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
