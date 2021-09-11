@@ -1,5 +1,8 @@
 <template>
-  <h2>Browse</h2>
+  <div>
+    <h2>Browse</h2>
+    <ContentEventCard></ContentEventCard>
+  </div>
 </template>
 
 <script>
