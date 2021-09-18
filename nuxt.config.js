@@ -15,6 +15,12 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap',
+      },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png?v=3' },
       {
         rel: 'stylesheet',
@@ -46,6 +52,7 @@ export default {
       '~/components/cards',
       '~/components/forms/content',
       '~/components/tables',
+      '~/components/payment',
     ],
   },
 

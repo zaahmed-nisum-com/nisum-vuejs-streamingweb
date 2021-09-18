@@ -44,6 +44,7 @@
         >
           <div>{{ qa.question }}</div>
           <div>{{ qa.answer }}</div>
+          <div class="border-bottom" />
         </div>
       </div>
       <div class="reviews">
@@ -54,7 +55,8 @@
           class="p-2"
         >
           <div>{{ review.user }}</div>
-          <div>{{ review.reviews }}</div>
+          <div>{{ review.review }}</div>
+          <div class="border-bottom" />
         </div>
       </div>
     </div>

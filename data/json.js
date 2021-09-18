@@ -18,7 +18,7 @@ export const data = {
       ],
       reviews: [
         { user: 'user', id: '', review: 'review' },
-        { user: '', id: '', review: 'review' },
+        { user: 'user', id: '', review: 'review' },
       ],
       description:
         'description description description description description',
@@ -116,4 +116,54 @@ export const data = {
         'description description description description description',
     },
   ],
+  cart: {
+    items: [
+      {
+        productId: 'productId',
+        varients: [
+          {
+            picture: 'https://picsum.photos/200',
+            varentId: '',
+            details: {
+              size: '',
+              color: '',
+            },
+            price: 10,
+          },
+          {
+            varentId: '',
+            picture: 'https://picsum.photos/200',
+            details: {
+              size: '',
+              color: '',
+            },
+            price: 10,
+          },
+        ],
+      },
+      // {
+      //   productId: 'productId',
+      //   varients: [
+      //     {
+      //       varentId: '',
+      //       details: {
+      //         size: '',
+      //         color: '',
+      //       },
+      //     },
+      //     {
+      //       varentId: '',
+      //       details: {
+      //         size: '',
+      //         color: '',
+      //       },
+      //     },
+      //   ],
+      // },
+    ],
+    total: '',
+    discount: '',
+    deliveryCharges: '',
+    subtotal: '',
+  },
 }

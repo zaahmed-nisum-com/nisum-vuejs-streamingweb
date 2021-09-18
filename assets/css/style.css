@@ -1,5 +1,16 @@
 body {
   font-size: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-green {
+  background-color: green;
+}
+.bg-red {
+  background-color: red;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 
 @media (max-width: 575.98px) {

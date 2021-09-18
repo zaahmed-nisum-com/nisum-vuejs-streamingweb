@@ -52,7 +52,6 @@ export default {
       data: JSON.parse(JSON.stringify(data)),
     }
   },
-
   mounted() {
     console.log(this.data.marchandies)
   },
@@ -62,11 +61,5 @@ export default {
 <style scoped>
 .merchandies-item {
   padding: 10px;
-}
-.bg-green {
-  background-color: green;
-}
-.bg-red {
-  background-color: red;
 }
 </style>
