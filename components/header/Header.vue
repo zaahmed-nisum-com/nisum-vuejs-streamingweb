@@ -15,6 +15,7 @@
         </button>
       </nav>
     </div>
+    <SearchBar />
     <div class="d-flex justify-content-end align-middle pr-3 align-self-center">
       <ul class="d-inline-flex text-light m-0">
         <li class="d-block pr-2">Dashboard</li>

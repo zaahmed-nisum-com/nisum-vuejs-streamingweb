@@ -1,0 +1,12 @@
+body {
+  font-size: 0.7rem;
+}
+
+@media (max-width: 575.98px) {
+  .product-image {
+    width: 100% !important;
+  }
+  .product-details {
+    width: 100% !important;
+  }
+}
