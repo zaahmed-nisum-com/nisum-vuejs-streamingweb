@@ -1,11 +1,11 @@
 <template>
-  <div class="search-bar-main d-flex bg-white">
+  <div class="ml-2 mr-2 search-bar-main d-flex bg-white" style="width: 250px">
     <input class="search-bar-input" />
     <div class="search-icon-main align-self-center">
-        <font-awesome-icon
-          class=" text-dark icon-small pl-1 pr-1 "
-          :icon="['fas', 'search']"
-        />
+      <font-awesome-icon
+        class="text-dark icon-small pl-1 pr-1"
+        :icon="['fas', 'search']"
+      />
     </div>
   </div>
 </template>
@@ -28,10 +28,10 @@ export default {}
   height: 100%;
   width: 90%;
 }
-.search-bar-input:focus{
-    outline: none;
+.search-bar-input:focus {
+  outline: none;
 }
-.icon-small{
-    font-size: 25px;
+.icon-small {
+  font-size: 25px;
 }
 </style>

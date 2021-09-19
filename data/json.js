@@ -124,9 +124,11 @@ export const data = {
           {
             picture: 'https://picsum.photos/200',
             varentId: '',
+            description: 'details details details',
+            quantity: 1,
             details: {
-              size: '',
-              color: '',
+              size: 'size',
+              color: 'color',
             },
             price: 10,
           },
@@ -141,25 +143,31 @@ export const data = {
           },
         ],
       },
-      // {
-      //   productId: 'productId',
-      //   varients: [
-      //     {
-      //       varentId: '',
-      //       details: {
-      //         size: '',
-      //         color: '',
-      //       },
-      //     },
-      //     {
-      //       varentId: '',
-      //       details: {
-      //         size: '',
-      //         color: '',
-      //       },
-      //     },
-      //   ],
-      // },
+      {
+        productId: 'productId',
+        varients: [
+          {
+            picture: 'https://picsum.photos/200',
+            varentId: '',
+            description: 'details details details',
+            quantity: 1,
+            details: {
+              size: 'size',
+              color: 'color',
+            },
+            price: 10,
+          },
+          {
+            varentId: '',
+            picture: 'https://picsum.photos/200',
+            details: {
+              size: '',
+              color: '',
+            },
+            price: 10,
+          },
+        ],
+      },
     ],
     total: '',
     discount: '',

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <!-- <ul> -->
     <!-- <li v-for="todo in todos.todo.list" :key="todo.id">
         <input :checked="todo.done" @change="toggle(todo)" type="checkbox" />
@@ -10,7 +9,6 @@
         <input @keyup.enter="addTodo" placeholder="What needs to be done?" />
       </li>
     </ul> -->
-    <Footer />
   </div>
 </template>
 

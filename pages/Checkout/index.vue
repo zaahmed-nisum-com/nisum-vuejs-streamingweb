@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid mt-2 mb-2">
     <h2>cart/checkout</h2>
     <div>
       <h4>Your Cart</h4>
@@ -9,13 +9,33 @@
         <div>
           <p>{{ item.productId }}</p>
           <div v-for="(varient, index) of item.varients" v-bind:key="index + 1">
-            <img style="width: 30px; height: 30px" :src="varient.picture" />
+            <div class="d-flex">
+              <img
+                style="width: 100px; height: 100px"
+                class="m-2 p-2 border rounded"
+                :src="varient.picture"
+              />
+              <div class="p-2">
+                <p class="m-0">
+                  Detials : <span>{{ varient.description }}</span>
+                </p>
+                <p class="m-0">
+                  Price : <span>{{ varient.price }}</span>
+                </p>
+                <p class="m-0">
+                  <span class=""> Size : {{ varient.details.size }}</span>
+                  <span class="">color : {{ varient.details.color }}</span>
+                </p>
+                <Merchandiesecounter />
+                <p class="m-0 cursor-pointer"><ins>Update</ins></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="border-bottom" />
       </div>
     </div>
-    <div style="width: fit-content" class="text-center float-right">
+    <div style="width: fit-content" class="flex-grow-1 text-center">
       <h3>Payment options</h3>
       <div>
         <div class="border rounded cursor-pointer">

@@ -16,8 +16,11 @@
       </nav>
     </div>
     <SearchBar />
-    <div class="d-flex justify-content-end align-middle pr-3 align-self-center">
-      <ul class="d-inline-flex text-light m-0">
+    <div
+      class="d-flex justify-content-end align-middle pr-3 align-self-center"
+      :class="[isMobileView ? 'hide' : 'show']"
+    >
+      <ul class="d-inline-flex text-light m-0 p-0">
         <li class="d-block pr-2">Dashboard</li>
         <li class="d-block pr-2">Login</li>
         <li class="d-block">Registration</li>
@@ -35,7 +38,45 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      windowHeight: window.innerHeight,
+      windowWidth: window.windowWidth,
+      isMobileView: false,
+    }
+  },
+  watch: {
+    windowHeight(newHeight, oldHeight) {
+      console.log(`it changed to ${newHeight} from ${oldHeight}`)
+    },
+    windowWidth(newWidth, oldWidth) {
+      if (newWidth <= 425) {
+        this.isMobileView = true
+      }
+      if (newWidth > 425) {
+        this.isMobileView = false
+      }
+    },
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize)
+    })
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
+  },
+
+  methods: {
+    onResize() {
+      this.windowHeight = window.innerHeight
+      this.windowWidth = window.innerWidth
+    },
+  },
+}
 </script>
 
 <style>
