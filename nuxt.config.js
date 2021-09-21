@@ -53,6 +53,7 @@ export default {
       '~/components/forms/content',
       '~/components/tables',
       '~/components/payment',
+      '~/components/panels',
     ],
   },
 

@@ -3,12 +3,14 @@
     <div class="d-flex flex-row flex-wrap justify-content-center">
       <div v-for="item of this.data.marchandies" v-bind:key="item.id">
         <div class="merchandies-item m-4 border rounded">
-          <div>
-            <img
-              data-src="https://picsum.photos/200"
-              src="https://picsum.photos/200"
-            />
-          </div>
+          <NuxtLink to="pdp/">
+            <div>
+              <img
+                data-src="https://picsum.photos/200"
+                src="https://picsum.photos/200"
+              />
+            </div>
+          </NuxtLink>
           <div>
             <p class="m-0">
               Title: <span>{{ item.title }}</span>
@@ -35,7 +37,8 @@
             </div>
           </div>
           <div>
-            <Merchandiesecounter />
+            <Button title="View Details" />
+            <!-- <Merchandiesecounter /> -->
           </div>
         </div>
       </div>
@@ -45,8 +48,10 @@
 
 <script>
 import { data } from '../../data/json'
+import Button from '../../components/buttons/Button.vue'
 
 export default {
+  components: { Button },
   data: () => {
     return {
       data: JSON.parse(JSON.stringify(data)),
@@ -54,6 +59,9 @@ export default {
   },
   mounted() {
     console.log(this.data.marchandies)
+  },
+  methods: {
+    handleClick() {},
   },
 }
 </script>

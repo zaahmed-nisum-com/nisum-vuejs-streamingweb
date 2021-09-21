@@ -1,12 +1,24 @@
 <template>
   <div>
     <h2>Browse</h2>
-    <ContentEventCard></ContentEventCard>
+    <div class="d-flex flex-row flex-wrap justify-content-center">
+      <div class="m-2" v-for="(item, index) of contents" v-bind:key="index + 1">
+        <ContentEventCard :content="item" />
+      </div>
+    </div>
+    <p>{{ data }}</p>
   </div>
 </template>
 
 <script>
-export default {}
+import { data } from '../../data/json'
+export default {
+  data: () => {
+    return {
+      contents: data.browser,
+    }
+  },
+}
 </script>
 
 <style scoped></style>

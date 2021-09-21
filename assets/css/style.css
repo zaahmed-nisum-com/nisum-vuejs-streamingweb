@@ -12,12 +12,25 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+.line-seperater {
+}
 .hide {
   display: none !important;
 }
 
 .show {
   display: block !important;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+.width-30 {
+  width: 30px;
+}
+.height-30 {
+  height: 30px;
 }
 
 @media (max-width: 575.98px) {

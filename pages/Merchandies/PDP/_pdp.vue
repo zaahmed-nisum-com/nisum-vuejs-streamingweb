@@ -9,12 +9,37 @@
       </div>
     </div>
     <div class="product-details">
-      <div class="description">
-        <h3>Description</h3>
-        <p class="m-0">
-          {{ data.marchandies[0].description }}
-        </p>
+      <div class="d-flex flex-row">
+        <div
+          v-for="color of data.marchandies[0].colors"
+          v-bind:key="color"
+          @click="handleSelectColor(color)"
+          class="p-2 m-2 border width-30 height-30 cursor-pointer"
+          :class="'bg-' + color"
+        >
+          <font-awesome-icon
+            v-if="color === item.color"
+            class="align-self-center text-light"
+            :icon="['fas', 'check']"
+          />
+        </div>
       </div>
+      <div class="d-flex flex-row">
+        <div
+          v-for="size of data.marchandies[0].sizes"
+          v-bind:key="size"
+          @click="handleSelectSize(size)"
+          class="p-3 m-2 border cursor-pointer"
+          :class="[size === item.size && 'selected-item']"
+        >
+          <p class="m-0">{{ size }}</p>
+        </div>
+      </div>
+      <div style="float: left">
+        <Button title="Add to cart" />
+      </div>
+    </div>
+    <div class="flex-column">
       <div class="rating">
         <h3>Rating</h3>
         <div class="d-flex flex-row">
@@ -33,8 +58,12 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="flex-column">
+      <div class="description">
+        <h3>Description</h3>
+        <p class="m-0">
+          {{ data.marchandies[0].description }}
+        </p>
+      </div>
       <div class="question-answers">
         <h3>Questins - Answers</h3>
         <div
@@ -65,15 +94,27 @@
 
 <script>
 import { data } from '../../../data/json'
+import Button from '../../../components/buttons/Button.vue'
 export default {
+  components: { Button },
   data: () => {
     return {
+      item: { color: '', size: '', id: '' },
       data: JSON.parse(JSON.stringify(data)),
     }
   },
 
   mounted() {
     console.log(this.data.marchandies)
+  },
+  methods: {
+    handleClick() {},
+    handleSelectColor(value) {
+      this.item.color = value
+    },
+    handleSelectSize(value) {
+      this.item.size = value
+    },
   },
 }
 </script>
@@ -84,5 +125,9 @@ export default {
 }
 .product-details {
   width: 50%;
+}
+.selected-item {
+  background-color: grey;
+  color: white;
 }
 </style>

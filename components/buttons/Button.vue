@@ -1,15 +1,29 @@
 <template>
-  <button>{{ title }}</button>
+  <div class="text-center">
+    <button class="btn-all border rounded" @click="handleClick">
+      {{ title }}
+    </button>
+  </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      title: 'title',
-    }
+  props: ['title'],
+  methods: {
+    handleClick() {
+      this.$parent.handleClick()
+    },
   },
 }
 </script>
 
-<style></style>
+<style scoped>
+.btn-all {
+  border: 0px;
+  padding: 10px;
+  width: 100px;
+  padding: 10px;
+  width: 100px;
+  box-shadow: 1px 1px 5px -2px grey;
+}
+</style>
