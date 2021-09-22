@@ -3,7 +3,7 @@
     <div class="d-flex flex-row flex-wrap justify-content-center">
       <div v-for="item of this.data.marchandies" v-bind:key="item.id">
         <div class="merchandies-item m-4 border rounded">
-          <NuxtLink to="pdp/">
+          <NuxtLink to="merchandies/pdp/">
             <div>
               <img
                 data-src="https://picsum.photos/200"
