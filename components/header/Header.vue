@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Drawer v-if="common.isDrawerOpen" />
-    <div class="p-2 border bg-dark d-flex">
+    <Drawer v-if="auth.isLogin && common.isDrawerOpen" />
+    <div class="p-2 border d-flex" style="background-color: #0083d0">
       <div class="d-flex justify-content-start flex-grow-1">
-        <nav class="navbar-dark bg-dark">
+        <nav class="navbar-dark bg-dark" v-if="auth.isLogin">
           <button
             :class="[common.isMobileView ? 'show' : 'hide']"
             class="navbar-toggler"
@@ -25,19 +25,19 @@
         :class="[common.isMobileView ? 'hide' : 'show']"
       >
         <ul class="d-inline-flex text-light m-0 p-0">
-          <li class="d-block pr-2">Dashboard</li>
+          <li v-if="auth.isLogin" class="d-block pr-2">Dashboard</li>
           <li class="d-block pr-2">Login</li>
           <li class="d-block">Registration</li>
         </ul>
       </div>
       <div class="d-flex justify-content-end align-self-center">
-        <div class="user-profile-icon mr-2">
+        <div v-if="auth.isLogin" class="user-profile-icon mr-2">
           <font-awesome-icon
             class="w-100 h-100 text-light"
             :icon="['fas', 'user-circle']"
           />
         </div>
-        <div class="user-cart-icon">
+        <div v-if="auth.isLogin" class="user-cart-icon">
           <div class="mini-cart-counter">
             <p class="m-0">2</p>
           </div>
@@ -63,7 +63,10 @@ export default {
   },
   computed: {
     common() {
-      return { ...JSON.parse(JSON.stringify(this.$store.state.common)) }
+      return JSON.parse(JSON.stringify(this.$store.state.common))
+    },
+    auth() {
+      return JSON.parse(JSON.stringify(this.$store.state.auth))
     },
   },
 
@@ -85,6 +88,7 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.onResize)
     })
+    console.log(this.auth)
   },
 
   beforeDestroy() {
@@ -107,7 +111,6 @@ export default {
 .user-profile-icon {
   height: 30px;
   width: 30px;
-  border: 0.5px solid;
   border-radius: 50%;
 }
 .user-cart-icon {

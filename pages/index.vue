@@ -1,41 +1,39 @@
 <template>
   <div>
-    <!-- <ul> -->
-    <!-- <li v-for="todo in todos.todo.list" :key="todo.id">
-        <input :checked="todo.done" @change="toggle(todo)" type="checkbox" />
-        <span :class="{ done: todo.done }">{{ todo.text }}</span>
-      </li>
-      <li>
-        <input @keyup.enter="addTodo" placeholder="What needs to be done?" />
-      </li>
-    </ul> -->
+    <div class="video-player-container ml-4 mr-4 mt-4" style="height: 400px">
+      <YoutubePlayer />
+    </div>
+    <div
+      class="
+        content-containter
+        d-flex
+        flex-row flex-wrap
+        justify-content-center
+        m-1
+      "
+    >
+      <div v-for="(item, index) of browse" v-bind:key="index + 1" class="m-2">
+        <ContentEventCard :content="item" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import YoutubePlayer from '../components/youtubeplayer/YoutubePlayer.vue'
+import { data } from '../data/json'
 
 export default {
-  computed: {
-    todos() {
-      return this.logge(this.$store.state)
-    },
+  data() {
+    return {
+      browse: data.browser,
+    }
   },
-  methods: {
-    logge(data) {
-      return JSON.parse(JSON.stringify(data))
-    },
-    addTodo(e) {
-      this.$store.commit('todo/add', e.target.value)
-      e.target.value = ''
-    },
-    ...mapMutations({
-      toggle: 'todo/toggle',
-    }),
+  components: {
+    YoutubePlayer,
   },
-  created() {
-    console.log(this.logge(this.$store.state))
-  },
+  computed: {},
+  methods: {},
 }
 </script>
 

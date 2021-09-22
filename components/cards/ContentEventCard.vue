@@ -1,15 +1,49 @@
 <template>
   <div class="card" style="width: 18rem">
     <div class="card-body">
-      <img class :src="content.picture" />
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+      <img class :src="content.picture" style="height: 100%; width: 100%" />
+      <h5 class="card-title m-0 p-1">{{ content.title }}</h5>
+      <div class="d-flex flex-row flex-wrap">
+        <p
+          class="d-flex m-1 p-1 border rounded"
+          v-for="(actor, index) of content.actors"
+          v-bind:key="index + 1"
+        >
+          {{ actor }}
+        </p>
+      </div>
+      <div class="d-flex flex-row flex-wrap">
+        <p
+          class="d-flex m-1 p-1 border rounded"
+          v-for="(director, index) of content.directors"
+          v-bind:key="index + 1"
+        >
+          {{ director }}
+        </p>
+      </div>
+      <div class="d-flex flex-row flex-wrap">
+        <p
+          class="d-flex m-1 p-1 border rounded"
+          v-for="(category, index) of content.category"
+          v-bind:key="index + 1"
+        >
+          {{ category }}
+        </p>
+      </div>
+      <p class="card-text m-0 p-1">{{ content.intro }}</p>
+      <p
+        style="width: fit-content"
+        class="d-flex m-1 p-1 border rounded text-white"
+        :class="[content.isAdult ? 'bg-danger' : 'bg-success']"
+      >
+        {{ content.isAdult ? 'Adult' : 'non-Adult' }}
       </p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <div class="d-flex flex-wrap">
+        <p class="m-0 cursor-pointer">Card link</p>
+        <NuxtLink to="/merchandies"
+          ><p class="m-0 ml-2 cursor-pointer">Merchandies</p></NuxtLink
+        >
+      </div>
     </div>
   </div>
 </template>

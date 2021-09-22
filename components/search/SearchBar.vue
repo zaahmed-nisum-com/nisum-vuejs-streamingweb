@@ -16,7 +16,6 @@ export default {}
 
 <style scoped>
 .search-bar-main {
-  border: solid 0.5px;
   padding: 0px 0px;
   border-radius: 50px;
 }
