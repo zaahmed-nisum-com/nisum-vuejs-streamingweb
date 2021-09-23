@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="video-player-container ml-4 mr-4 mt-4" style="height: 400px">
-      <YoutubePlayer />
+      <YoutubePlayer :videoUrl="videoUrl" />
     </div>
     <div
       class="
@@ -24,16 +24,25 @@ import YoutubePlayer from '../components/youtubeplayer/YoutubePlayer.vue'
 import { data } from '../data/json'
 
 export default {
+  layout: 'common',
   data() {
     return {
       browse: data.browser,
+      videoUrl: '',
     }
   },
   components: {
     YoutubePlayer,
   },
   computed: {},
-  methods: {},
+  methods: {
+    handlePlayTariler(url) {
+      this.videoUrl = url
+    },
+    handleImageClick(url) {
+      this.handlePlayTariler(url)
+    },
+  },
 }
 </script>
 

@@ -1,7 +1,13 @@
 <template>
   <div class="card" style="width: 18rem">
     <div class="card-body">
-      <img class :src="content.picture" style="height: 100%; width: 100%" />
+      <img
+        @click="handleImageClick(content.trailerUrl)"
+        :data-src="content.picture"
+        class="lazy"
+        src="https://picsum.photos/200"
+        style="height: 100%; width: 100%"
+      />
       <h5 class="card-title m-0 p-1">{{ content.title }}</h5>
       <div class="d-flex flex-row flex-wrap">
         <p
@@ -39,7 +45,7 @@
         {{ content.isAdult ? 'Adult' : 'non-Adult' }}
       </p>
       <div class="d-flex flex-wrap">
-        <p class="m-0 cursor-pointer">Card link</p>
+        <p class="m-0 cursor-pointer" @click="handleWatchMovie">Watch</p>
         <NuxtLink to="/merchandies"
           ><p class="m-0 ml-2 cursor-pointer">Merchandies</p></NuxtLink
         >
@@ -49,10 +55,32 @@
 </template>
 
 <script>
+import helpers from '../../utilities/helpers'
 export default {
   props: ['content'],
+  computed: {
+    auth() {
+      return JSON.parse(JSON.stringify(this.$store.state.auth))
+    },
+  },
   mounted() {
-    console.log(this.content)
+    window.scrollTo(0, 0)
+    window.addEventListener('scroll', helpers.imageLazyLoading)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', helpers.imageLazyLoading)
+  },
+  methods: {
+    handleImageClick(url) {
+      this.$parent.handleImageClick(url)
+    },
+    handleWatchMovie() {
+      if (!this.auth.isLogin) {
+        this.$router.push({ path: 'watch' })
+      } else {
+        this.$router.push({ path: 'login' })
+      }
+    },
   },
 }
 </script>

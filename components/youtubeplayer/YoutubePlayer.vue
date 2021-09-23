@@ -4,7 +4,7 @@
       player-width="100%"
       player-height="100%"
       style="width:100% width:100%"
-      :video-id="myFunction('https://www.youtube.com/watch?v=GoGy2Uk75HA')"
+      :video-id="myFunction(videoUrl)"
       ref="youtube"
       @playing="playing"
     />
@@ -14,8 +14,10 @@
 <script>
 import { getIdFromUrl } from 'vue-youtube'
 export default {
+  props: ['videoUrl'],
   methods: {
     myFunction(url) {
+      window.scrollTo(0, 0)
       return getIdFromUrl(url)
     },
   },
