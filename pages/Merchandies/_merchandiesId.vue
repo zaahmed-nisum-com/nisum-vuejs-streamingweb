@@ -4,12 +4,10 @@
       <div v-for="item of this.data.marchandies" v-bind:key="item.id">
         <div class="merchandies-item m-4 border rounded">
           <NuxtLink to="merchandies/pdp/">
-            <div>
-              <img
-                data-src="https://picsum.photos/200"
-                src="https://picsum.photos/200"
-              />
-            </div>
+            <Img
+              url="https://picsum.photos/200"
+              src="https://picsum.photos/200"
+            />
           </NuxtLink>
           <div>
             <p class="m-0">
@@ -38,7 +36,6 @@
           </div>
           <div>
             <Button title="View Details" />
-            <!-- <Merchandiesecounter /> -->
           </div>
         </div>
       </div>

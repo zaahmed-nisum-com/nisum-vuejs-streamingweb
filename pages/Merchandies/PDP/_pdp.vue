@@ -2,10 +2,7 @@
   <div class="d-flex flex-wrap container-fluid p-2">
     <div class="product-image text-center">
       <div>
-        <img
-          data-src="https://picsum.photos/200"
-          src="https://picsum.photos/200"
-        />
+        <Img url="https://picsum.photos/200" src="https://picsum.photos/200" />
       </div>
     </div>
     <div class="product-details">
@@ -17,10 +14,10 @@
           class="p-2 m-2 border width-30 height-30 cursor-pointer"
           :class="'bg-' + color"
         >
-          <font-awesome-icon
+          <Icon
             v-if="color === item.color"
-            class="align-self-center text-light"
-            :icon="['fas', 'check']"
+            iconName="check"
+            className="align-self-center text-light"
           />
         </div>
       </div>
@@ -48,11 +45,11 @@
             v-bind:key="rating"
             class="p-2 d-flex align-self-center"
           >
-            <font-awesome-icon
+            <Icon
               v-for="item of Array.from(Array(index + 1))"
               v-bind:key="item"
-              class="align-self-center text-dark"
-              :icon="['fas', 'star']"
+              className="align-self-center text-dark"
+              iconName="star"
             />
             <span class="ml-1">{{ rating }}</span>
           </div>

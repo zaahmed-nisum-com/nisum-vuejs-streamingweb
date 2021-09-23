@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 18rem">
+  <div class="card content-event-card" style="width: 18rem">
     <div class="card-body">
       <img
         @click="handleImageClick(content.trailerUrl)"
@@ -85,4 +85,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.content-event-card {
+  transition: 0.3s;
+}
+.content-event-card:hover {
+  margin: 20px;
+}
+</style>

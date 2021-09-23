@@ -2,9 +2,9 @@
   <div class="ml-2 mr-2 search-bar-main d-flex bg-white" style="width: 250px">
     <input class="search-bar-input" />
     <div class="search-icon-main align-self-center">
-      <font-awesome-icon
-        class="text-dark icon-small pl-1 pr-1"
-        :icon="['fas', 'search']"
+      <Icon
+        className="text-dark icon-small pl-1 pr-1 cursor-pointer"
+        iconName="search"
       />
     </div>
   </div>

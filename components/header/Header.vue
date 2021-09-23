@@ -32,19 +32,16 @@
       </div>
       <div class="d-flex justify-content-end align-self-center">
         <div v-if="auth.isLogin" class="user-profile-icon mr-2">
-          <font-awesome-icon
-            class="w-100 h-100 text-light"
-            :icon="['fas', 'user-circle']"
-          />
+          <Icon className="w-100 h-100 text-light" iconName="user-circle" />
         </div>
         <div v-if="auth.isLogin" class="user-cart-icon">
           <div class="mini-cart-counter">
             <p class="m-0">2</p>
           </div>
           <NuxtLink to="/checkout">
-            <font-awesome-icon
-              class="w-100 h-100 text-light cursor-pointer"
-              :icon="['fas', 'shopping-cart']"
+            <Icon
+              className="w-100 h-100 text-light cursor-pointer"
+              iconName="shopping-cart"
             />
           </NuxtLink>
         </div>

@@ -10,9 +10,9 @@
           <p>{{ item.productId }}</p>
           <div v-for="(varient, index) of item.varients" v-bind:key="index + 1">
             <div class="d-flex">
-              <img
+              <Img
                 style="width: 100px; height: 100px"
-                class="m-2 p-2 border rounded"
+                :url="varient.picture"
                 :src="varient.picture"
               />
               <div class="p-2">

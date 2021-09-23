@@ -13,19 +13,19 @@
           v-bind:key="index + 1"
         >
           <div class="border rounded p-1 pl-2 pr-2 mr-2">
-            <font-awesome-icon
+            <Icon
               v-if="
                 isInclude(subscriptionPlan.permissions, permissions) === true
               "
-              class="text-success"
-              :icon="['fas', 'check']"
+              className="text-success"
+              iconName="check"
             />
-            <font-awesome-icon
+            <Icon
               v-if="
                 isInclude(subscriptionPlan.permissions, permissions) === false
               "
-              class="text-danger"
-              :icon="['fas', 'times']"
+              className="text-danger"
+              iconName="times"
             />
           </div>
           <p class="align-self-center m-0">{{ permissions }}</p>
