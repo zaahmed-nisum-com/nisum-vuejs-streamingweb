@@ -16,6 +16,7 @@
 <script>
 import { data } from '../../data/json'
 export default {
+  layout: 'common',
   data: () => {
     return {
       subscriptionPlan: JSON.parse(JSON.stringify(data.subscriptionPlans)),

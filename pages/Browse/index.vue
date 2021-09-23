@@ -13,6 +13,7 @@
 <script>
 import { data } from '../../data/json'
 export default {
+  layout: 'common',
   data: () => {
     return {
       contents: data.browser,

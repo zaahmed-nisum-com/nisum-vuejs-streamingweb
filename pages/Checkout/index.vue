@@ -65,6 +65,7 @@
 <script>
 import { data } from '../../data/json'
 export default {
+  layout: 'common',
   data: () => {
     return {
       data: JSON.parse(JSON.stringify(data)),

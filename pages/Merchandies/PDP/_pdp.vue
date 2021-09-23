@@ -97,6 +97,7 @@ import { data } from '../../../data/json'
 import Button from '../../../components/buttons/Button.vue'
 export default {
   components: { Button },
+  layout: 'common',
   data: () => {
     return {
       item: { color: '', size: '', id: '' },
