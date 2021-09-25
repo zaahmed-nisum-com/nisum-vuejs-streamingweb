@@ -14,6 +14,7 @@
         >
           <div class="border rounded p-1 pl-2 pr-2 mr-2">
             <Icon
+              type="fas"
               v-if="
                 isInclude(subscriptionPlan.permissions, permissions) === true
               "
@@ -21,6 +22,7 @@
               iconName="check"
             />
             <Icon
+              type="fas"
               v-if="
                 isInclude(subscriptionPlan.permissions, permissions) === false
               "

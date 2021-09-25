@@ -15,12 +15,21 @@
 
 <script>
 import { data } from '../../data/json'
+import { subscriptionMiddleware } from '../../middleware/subscription'
 export default {
   layout: 'common',
   data: () => {
     return {
       subscriptionPlan: JSON.parse(JSON.stringify(data.subscriptionPlans)),
     }
+  },
+  mounted() {
+    this.handleFetchSubscription()
+  },
+  methods: {
+    handleFetchSubscription() {
+      subscriptionMiddleware.getSubscriptionPlans()
+    },
   },
 }
 </script>

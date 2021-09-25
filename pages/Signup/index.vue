@@ -1,59 +1,85 @@
 <template>
   <div class="container-fluid">
-    <h2>signup</h2>
-    <div class="signup-main-container">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            id="exampleInputEmail1"
-            type="email"
-            class="form-control"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            id="exampleInputPassword1"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            id="exampleInputPassword1"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            id="exampleInputPassword1"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group form-check">
-          <input id="exampleCheck1" type="checkbox" class="form-check-input" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
-          >
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Register</button>
-      </form>
+    <div
+      class="signup-main-container mt-4 p-4 rounded"
+      style="width: fit-content; background-color: #0083d0"
+    >
+      <Input
+        label="First Name"
+        labelClass="text-white"
+        id="firstname"
+        v-model="firstName"
+        type="text"
+        describedby="first name"
+        placeholder="Enter First Name"
+      />
+      <Input
+        label="Last Name"
+        labelClass="text-white"
+        id="lastname"
+        v-model="lastName"
+        type="text"
+        describedby="last name"
+        placeholder="Enter Last Name"
+      />
+      <Input
+        label="Email"
+        labelClass="text-white"
+        v-model="email"
+        id="email"
+        type="email"
+        placeholder="email"
+      />
+      <Input
+        label="Password"
+        v-model="password"
+        id="password"
+        labelClass="text-white"
+        type="password"
+        placeholder="password"
+      />
+      <div class="form-group form-check">
+        <input id="exampleCheck1" type="checkbox" class="form-check-input" />
+        <label class="form-check-label text-white" for="exampleCheck1"
+          >Check me out</label
+        >
+      </div>
+      <Button title="Register" />
+      <NuxtLink to="/login"
+        ><p class="m-0 text-white mt-2 cursor-pointer">
+          Already has a account
+        </p></NuxtLink
+      >
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import Button from '../../components/buttons/Button.vue'
+import { authMiddleware } from '../../middleware/auth'
+export default {
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    }
+  },
+  components: {
+    Button,
+  },
+  methods: {
+    handleClick() {
+      authMiddleware.signUp({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+      })
+    },
+  },
+}
 </script>
 
 <style scoped>

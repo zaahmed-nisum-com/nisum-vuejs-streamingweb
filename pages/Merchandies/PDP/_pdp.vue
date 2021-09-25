@@ -15,6 +15,8 @@
           :class="'bg-' + color"
         >
           <Icon
+            style="font-size: 10px"
+            type="fas"
             v-if="color === item.color"
             iconName="check"
             className="align-self-center text-light"
@@ -39,21 +41,7 @@
     <div class="flex-column">
       <div class="rating">
         <h3>Rating</h3>
-        <div class="d-flex flex-row">
-          <div
-            v-for="(rating, index) of data.marchandies[0].ratings"
-            v-bind:key="rating"
-            class="p-2 d-flex align-self-center"
-          >
-            <Icon
-              v-for="item of Array.from(Array(index + 1))"
-              v-bind:key="item"
-              className="align-self-center text-dark"
-              iconName="star"
-            />
-            <span class="ml-1">{{ rating }}</span>
-          </div>
-        </div>
+        <Rating :ratings="data.marchandies[0].ratings" />
       </div>
       <div class="description">
         <h3>Description</h3>
@@ -102,9 +90,7 @@ export default {
     }
   },
 
-  mounted() {
-    console.log(this.data.marchandies)
-  },
+  mounted() {},
   methods: {
     handleClick() {},
     handleSelectColor(value) {

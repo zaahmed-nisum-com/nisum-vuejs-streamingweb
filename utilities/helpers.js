@@ -44,7 +44,6 @@ export default {
 
       const response = await fetch(apiUrl, options)
       const json = await response.json()
-      // console.log(json)
       if (response.status !== 200) {
         throw new Error(json.message)
       }

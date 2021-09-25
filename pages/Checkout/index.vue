@@ -73,9 +73,7 @@ export default {
       isOpenStripe: false,
     }
   },
-  mounted() {
-    console.log(data.cart)
-  },
+  mounted() {},
   methods: {
     handleCODPanel(value) {
       //place order

@@ -6,7 +6,7 @@ import admin from './admin/store'
 import browse from './browse/store'
 import category from './category/store'
 import common from './common/store'
-import commonMutations from './common/muations'
+import subscription from './subscription/store'
 
 Vue.use(Vuex)
 
@@ -19,6 +19,7 @@ const store = () =>
       browse,
       category,
       common,
+      subscription,
     },
   })
 

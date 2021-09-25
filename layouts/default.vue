@@ -2,16 +2,14 @@
   <div>
     <portal-target
       v-if="this.error.isOpen"
-      class="border rounded"
-      style="position: absolute; padding: 2px; bottom: 20px; left: 15px"
+      class="border rounded p-3"
+      style="position: absolute; bottom: 20px; left: 15px"
     >
       <div>
-        <p>{{ this.error.message }}</p>
-      </div></portal-target
-    >
-    <Header />
+        <p class="m-0">{{ this.error.message }}</p>
+      </div>
+    </portal-target>
     <Nuxt />
-    <Footer />
   </div>
 </template>
 

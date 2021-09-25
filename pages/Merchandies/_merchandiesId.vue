@@ -55,9 +55,7 @@ export default {
       data: JSON.parse(JSON.stringify(data)),
     }
   },
-  mounted() {
-    console.log(this.data.marchandies)
-  },
+  mounted() {},
   methods: {
     handleClick() {},
   },

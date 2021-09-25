@@ -3,6 +3,10 @@ export default {
   state: {
     isDrawerOpen: false,
     isMobileView: false,
+    error: {
+      message: '',
+      isOpen: false,
+    },
   },
   getters: {},
   mutations: {

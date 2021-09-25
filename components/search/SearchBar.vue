@@ -3,7 +3,9 @@
     <input class="search-bar-input" />
     <div class="search-icon-main align-self-center">
       <Icon
-        className="text-dark icon-small pl-1 pr-1 cursor-pointer"
+        style="font-size: 20px; color: black"
+        type="fas"
+        className="text-dark  pl-1 pr-1 cursor-pointer"
         iconName="search"
       />
     </div>

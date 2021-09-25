@@ -8,12 +8,9 @@ export default {
   methods: {
     loog() {
       return null
-      //   console.log(paymentOptionsPanelStyle)
     },
   },
   mounted() {
-    console.log(this.paymentOptionsPanelStyle)
-    console.log(typeof this.paymentOptionsPanelStyle)
     this.loog()
   },
 }
