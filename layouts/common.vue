@@ -1,14 +1,14 @@
 <template>
   <div>
-    <portal-target
+    <div
       v-if="this.error.isOpen"
       class="border rounded"
       style="position: absolute; padding: 2px; bottom: 20px; left: 15px"
     >
       <div>
         <p>{{ this.error.message }}</p>
-      </div></portal-target
-    >
+      </div>
+    </div>
     <Header />
     <Nuxt />
     <Footer />
@@ -22,7 +22,6 @@ export default {
       return JSON.parse(JSON.stringify(this.$store.state.common.error))
     },
   },
-  mounted() {},
 }
 </script>
 

@@ -16,6 +16,9 @@ export default {
     toggleMobileView(state, value) {
       state.isMobileView = value
     },
+    errorMessage(state, data) {
+      state.error = data
+    },
   },
   actions: {},
 }

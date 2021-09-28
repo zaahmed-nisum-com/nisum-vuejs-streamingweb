@@ -1,14 +1,14 @@
 <template>
   <div>
-    <portal-target
-      v-if="this.error.isOpen"
+    <div
+      v-if="error.isOpen"
       class="border rounded p-3"
       style="position: absolute; bottom: 20px; left: 15px"
     >
       <div>
-        <p class="m-0">{{ this.error.message }}</p>
+        <p class="m-0">{{ error.message }}</p>
       </div>
-    </portal-target>
+    </div>
     <Nuxt />
   </div>
 </template>
@@ -20,7 +20,17 @@ export default {
       return JSON.parse(JSON.stringify(this.$store.state.common.error))
     },
   },
-  mounted() {},
+  updated() {
+    console.log('update')
+    if (this.error.isOpen) {
+      setTimeout(() => {
+        this.$store.commit('common/errorMessage', {
+          message: '',
+          isOpen: false,
+        })
+      }, 5000)
+    }
+  },
 }
 </script>
 
