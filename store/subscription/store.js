@@ -8,6 +8,9 @@ export default {
     setSubsciptions(state, data) {
       state.subscription = data
     },
+    getAllSubscriptionPackges(state, data) {
+      state.subscription = data
+    },
   },
   actions: {},
 }

@@ -21,7 +21,6 @@ export default {
     },
   },
   updated() {
-    console.log('update')
     if (this.error.isOpen) {
       setTimeout(() => {
         this.$store.commit('common/errorMessage', {

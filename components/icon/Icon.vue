@@ -18,9 +18,6 @@
 <script>
 export default {
   props: ['iconName', 'className', 'type', 'styles'],
-  mounted() {
-    console.log(this.styles)
-  },
 }
 </script>
 

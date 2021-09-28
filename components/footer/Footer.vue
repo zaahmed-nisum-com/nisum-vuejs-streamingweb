@@ -13,17 +13,17 @@
             type="fab"
           />
           <Icon
-            iconName="facebook-square"
+            iconName="twitter"
             style="margin: 2px; font-size: 20px; color: white"
             type="fab"
           />
           <Icon
-            iconName="facebook-square"
+            iconName="instagram"
             style="margin: 2px; font-size: 20px; color: white"
             type="fab"
           />
           <Icon
-            iconName="facebook-square"
+            iconName="youtube"
             style="margin: 2px; font-size: 20px; color: white"
             type="fab"
           />
@@ -44,6 +44,11 @@
         </a>
         <p class="m-0 text-white mb-1 a- cursor-pointer">About us</p>
         <p class="m-0 text-white mb-1 a- cursor-pointer">Terms & Conditions</p>
+        <NuxtLink to="/subscription"
+          ><p class="m-0 text-white mb-1 a- cursor-pointer">
+            Subscription Plans
+          </p></NuxtLink
+        >
       </div>
       <div class="d-flex w-50 flex-column">
         <Input

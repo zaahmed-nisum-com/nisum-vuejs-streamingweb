@@ -1,15 +1,15 @@
 <template>
   <div class="subscription-options-container">
-    <div class="p-3 border rounded">
+    <div class="p-3 border rounded m-4" style="width: 250px">
       <div>
         <h2 class="text-center">{{ subscriptionPlan.title }}</h2>
         <p class="m-0">{{ subscriptionPlan.details }}</p>
       </div>
       <div class="">
-        <h3 class="m-0 text-center">{{ subscriptionPlan.price }}</h3>
+        <h3 class="m-0 text-center">${{ subscriptionPlan.price }}</h3>
         <div
           class="d-flex flex-row m-2"
-          v-for="(permissions, index) of Array('Read', 'Write', 'Download')"
+          v-for="(permissions, index) of Array('read', 'write', 'download')"
           v-bind:key="index + 1"
         >
           <div class="border rounded p-1 pl-2 pr-2 mr-2">
@@ -38,12 +38,12 @@
             conditions Treams and conditions
           </p>
         </div>
-        <Button title="Buy" />
         <SelectPaymentOptions
           v-if="isPaymentOptionsPanelOpen"
           :paymentOptionsPanelStyle="paymentOptionsPanelStyle"
         />
       </div>
+      <Button title="Buy" />
     </div>
   </div>
 </template>

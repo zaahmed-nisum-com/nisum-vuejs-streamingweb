@@ -1,7 +1,7 @@
 import constants from './constants'
 
 const keys = {
-  baseURL: constants.baseURL,
+  baseURL: constants.localBaseUrl,
 }
 if (process.env.enviroment === 'localhost') {
   keys.baseURL = constants.localBaseUrl

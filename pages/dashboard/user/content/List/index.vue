@@ -87,7 +87,6 @@ export default {
     data.userContentList.map(
       (item) => (item['actions'] = { deleteIcon: 'trash', editIcon: 'edit' })
     )
-    console.log(data.userContentList)
   },
 }
 </script>
