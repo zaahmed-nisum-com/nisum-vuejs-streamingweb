@@ -5,6 +5,7 @@
       :id="id"
       :type="type"
       :value="value"
+      :style="styles"
       class="form-control"
       @input="$emit('input', $event.target.value)"
       :class="className"
@@ -24,6 +25,7 @@ export default {
     'placeholder',
     'className',
     'id',
+    'styles',
     'describedby',
     'labelClass',
   ],

@@ -12,8 +12,7 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
-.line-seperater {
-}
+
 .hide {
   display: none !important;
 }
@@ -29,6 +28,13 @@ a {
 
 .a-:hover {
   text-decoration: none;
+}
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 .a- {

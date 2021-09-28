@@ -21,11 +21,19 @@
       </div>
       <SearchBar />
       <div
+        v-if="auth.isLogin"
         class="d-flex justify-content-end align-middle pr-3 align-self-center"
         :class="[common.isMobileView ? 'hide' : 'show']"
       >
         <ul class="d-inline-flex text-light m-0 p-0">
           <li v-if="auth.isLogin" class="d-block pr-2">Dashboard</li>
+        </ul>
+      </div>
+      <div
+        v-if="!auth.isLogin"
+        class="d-flex justify-content-end align-middle pr-3 align-self-center"
+      >
+        <ul class="d-inline-flex text-light m-0 p-0">
           <NuxtLink to="/login"
             ><li class="d-block pr-2 a-">Login</li></NuxtLink
           >

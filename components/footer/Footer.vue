@@ -3,8 +3,8 @@
     class="footer d-flex flex-column pl-2 pr-2 pt-2 border"
     style="background-color: #0083d0"
   >
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column w-50">
+    <div class="d-flex flex-wrap flex-row">
+      <div class="flex-fill flex-column">
         <h6 class="text-white">Social media</h6>
         <div class="d-flex flex-row">
           <Icon
@@ -29,7 +29,7 @@
           />
         </div>
       </div>
-      <div class="d-flex flex-column w-50">
+      <div class="flex-fill flex-column">
         <a
           class="m-0 text-white mb-1 a- cursor-pointer"
           href="tel:03022XXXXXXX"
@@ -50,9 +50,10 @@
           </p></NuxtLink
         >
       </div>
-      <div class="d-flex w-50 flex-column">
+      <div class="flex-fill flex-column">
         <Input
           labelClass="text-white"
+          styles="width: 200px; margin:0 auto "
           id="email"
           type="email"
           placeholder="Email"

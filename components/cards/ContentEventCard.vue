@@ -90,6 +90,6 @@ export default {
   transition: 0.3s;
 }
 .content-event-card:hover {
-  margin: 20px;
+  margin: 10px;
 }
 </style>
