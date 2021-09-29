@@ -4,6 +4,7 @@ const keys = {
   baseURL: constants.localBaseUrl,
 }
 console.log(process.env.enviroment)
+console.log(process.env.HOST)
 if (process.env.enviroment === 'localhost') {
   keys.baseURL = constants.localBaseUrl
 }
