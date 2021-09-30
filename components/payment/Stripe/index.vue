@@ -20,7 +20,11 @@
           />
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          <stripe-element-card
+            ref="elementRef"
+            pk="pk_test_51I2Ld6FOGza3SEPu4AqpMnsf89hGHePPcRb2S43OsaUKw8BizAeeTKhv7VV9MlmI6UxJcMjJm1eaIKe3MhLlbZ1O008QX074mG"
+            @token="tokenCreated"
+          />
         </div>
         <div class="modal-footer">
           <button
@@ -41,9 +45,19 @@
 </template>
 
 <script>
+import { StripeElementCard } from '@vue-stripe/vue-stripe'
+
 export default {
+  components: {
+    StripeElementCard,
+  },
   props: ['isOpen'],
   methods: {
+    tokenCreated(token) {
+      console.log(token)
+      // handle the token
+      // send it to your server
+    },
     handleClick() {
       this.$parent.handleStripePanel(!this.isOpen)
     },
