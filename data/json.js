@@ -1,5 +1,5 @@
 export const data = {
-  marchandies: [
+  merchandise: [
     {
       id: 1,
       title: 'x-cape',

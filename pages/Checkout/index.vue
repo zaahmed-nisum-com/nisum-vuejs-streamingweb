@@ -26,7 +26,7 @@
                   <span class=""> Size : {{ varient.details.size }}</span>
                   <span class="">color : {{ varient.details.color }}</span>
                 </p>
-                <Merchandiesecounter />
+                <Merchandisecounter />
                 <p class="m-0 cursor-pointer"><ins>Update</ins></p>
               </div>
             </div>

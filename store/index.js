@@ -7,6 +7,7 @@ import browse from './browse/store'
 import category from './category/store'
 import common from './common/store'
 import subscription from './subscription/store'
+import merchandise from './merchandise/store'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ const store = () =>
       category,
       common,
       subscription,
+      merchandise,
     },
   })
 

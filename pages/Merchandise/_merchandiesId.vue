@@ -1,14 +1,20 @@
 <template>
   <div>
     <div class="d-flex flex-row flex-wrap justify-content-center">
-      <div v-for="item of this.data.marchandies" v-bind:key="item.id">
-        <div class="merchandies-item m-4 border rounded">
-          <NuxtLink to="merchandies/pdp/">
-            <Img
-              url="https://picsum.photos/200"
-              src="https://picsum.photos/200"
-            />
-          </NuxtLink>
+      <div v-for="item of this.data.merchandise" v-bind:key="item.id">
+        <div class="merchandise-item m-4 border rounded">
+          <!-- <nuxt-link :to="{ path: 'merchandies/pdp/', query: { data: item } }"> -->
+          <Img
+            @click="
+              $router.push({
+                path: `/merchandise/pdp`,
+                query: { id: item.id },
+              })
+            "
+            url="https://picsum.photos/200"
+            src="https://picsum.photos/200"
+          />
+          <!-- </nuxt-link> -->
           <div>
             <p class="m-0">
               Title: <span>{{ item.title }}</span>
@@ -46,24 +52,41 @@
 <script>
 import { data } from '../../data/json'
 import Button from '../../components/buttons/Button.vue'
+import { merchandiseMiddleware } from '../../middleware/merchandise'
 
 export default {
   layout: 'common',
   components: { Button },
+  computed: {
+    auth() {
+      return JSON.parse(JSON.stringify(this.$store.state.auth))
+    },
+    merchandise() {
+      return JSON.parse(
+        JSON.stringify(this.$store.state.merchandise.merchandise)
+      )
+    },
+  },
   data: () => {
     return {
       data: JSON.parse(JSON.stringify(data)),
     }
   },
-  mounted() {},
+  mounted() {
+    this.getMerchandies()
+    console.log(this.merchandise)
+  },
   methods: {
+    getMerchandies() {
+      merchandiseMiddleware.getAllMerchandiseById()
+    },
     handleClick() {},
   },
 }
 </script>
 
 <style scoped>
-.merchandies-item {
+.merchandise-item {
   padding: 10px;
 }
 </style>

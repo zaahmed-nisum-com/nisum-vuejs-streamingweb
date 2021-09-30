@@ -85,6 +85,18 @@ export default {
     ],
   ],
 
+  publicRuntimeConfig: {
+    BASE_URL:
+      process.env.ENV_TYPE === 'localhost'
+        ? 'http://localhost:8001/'
+        : process.env.ENV_TYPE === 'development'
+        ? 'https://streaming-app-server.herokuapp.com/'
+        : 'https://streaming-app-server.herokuapp.com/',
+  },
+  privateRuntimeConfig: {
+    // apiSecret: process.env.API_SECRET,
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }

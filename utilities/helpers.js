@@ -23,7 +23,7 @@ export default {
   apiMethod: async (path, method, body, authorizationToken) => {
     try {
       const apiUrl = keys.baseURL + path
-      console.log(apiUrl)
+      // console.log(env)
       const headers = {}
 
       if (authorizationToken) {
