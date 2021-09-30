@@ -85,10 +85,10 @@ export default {
 
     handleStripePanel(value) {
       //place order
-      this.isOpenCOD = !value
+      this.isOpenStripe = !value
     },
     handleCloseStripePanel(value) {
-      this.isOpenCOD = !value
+      this.isOpenStripe = !value
     },
   },
 }
