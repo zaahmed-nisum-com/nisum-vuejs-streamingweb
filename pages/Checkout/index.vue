@@ -38,9 +38,16 @@
     <div style="width: fit-content" class="flex-grow-1 text-center">
       <h3>Payment options</h3>
       <div>
-        <div class="border rounded cursor-pointer">
+        <PayPal
+          amount="10.00"
+          currency="USD"
+          :clent="credentials"
+          evn="sandbox"
+          :button-style="styles"
+        />
+        <!-- <div class="border rounded cursor-pointer">
           <p class="m-0 p-2">Pay with Paypal</p>
-        </div>
+        </div> -->
         <h6>OR</h6>
         <div
           class="border rounded cursor-pointer"
@@ -63,14 +70,28 @@
 </template>
 
 <script>
+import keys from '../../configurations/keys'
 import { data } from '../../data/json'
+import PayPal from 'vue-paypal-checkout'
 export default {
   layout: 'common',
+  components: {
+    PayPal,
+  },
   data: () => {
     return {
       data: JSON.parse(JSON.stringify(data)),
       isOpenCOD: false,
       isOpenStripe: false,
+      credentials: {
+        sandbox: keys.PAYPAL_SANDBOX_KEY,
+      },
+      styles: {
+        label: 'checkout',
+        size: 'responsive',
+        shape: 'pill',
+        color: 'gold',
+      },
     }
   },
   mounted() {},
