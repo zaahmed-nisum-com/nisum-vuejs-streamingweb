@@ -1,9 +1,12 @@
 import constants from './constants'
 
 const keys = {
-  baseURL: constants.baseURL,
+  baseURL: constants.localBaseUrl,
 }
-
+keys.STRIPE_PUBLIC_DUMMY_KEY = process.env.STRIPE_PUBLIC_DUMMY_KEY
+keys.PAYPAL_SANDBOX_KEY = process.env.PAYPAL_SANDBOX_KEY
+// console.log(process.env.enviroment)
+// console.log(process.env.HOST)
 if (process.env.enviroment === 'localhost') {
   keys.baseURL = constants.localBaseUrl
 }

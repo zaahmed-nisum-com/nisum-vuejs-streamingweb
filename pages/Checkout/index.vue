@@ -26,7 +26,7 @@
                   <span class=""> Size : {{ varient.details.size }}</span>
                   <span class="">color : {{ varient.details.color }}</span>
                 </p>
-                <Merchandiesecounter />
+                <Merchandisecounter />
                 <p class="m-0 cursor-pointer"><ins>Update</ins></p>
               </div>
             </div>
@@ -38,9 +38,16 @@
     <div style="width: fit-content" class="flex-grow-1 text-center">
       <h3>Payment options</h3>
       <div>
-        <div class="border rounded cursor-pointer">
+        <PayPal
+          amount="10.00"
+          currency="USD"
+          :clent="credentials"
+          evn="sandbox"
+          :button-style="styles"
+        />
+        <!-- <div class="border rounded cursor-pointer">
           <p class="m-0 p-2">Pay with Paypal</p>
-        </div>
+        </div> -->
         <h6>OR</h6>
         <div
           class="border rounded cursor-pointer"
@@ -63,19 +70,31 @@
 </template>
 
 <script>
+import keys from '../../configurations/keys'
 import { data } from '../../data/json'
+import PayPal from 'vue-paypal-checkout'
 export default {
   layout: 'common',
+  components: {
+    PayPal,
+  },
   data: () => {
     return {
       data: JSON.parse(JSON.stringify(data)),
       isOpenCOD: false,
       isOpenStripe: false,
+      credentials: {
+        sandbox: keys.PAYPAL_SANDBOX_KEY,
+      },
+      styles: {
+        label: 'checkout',
+        size: 'responsive',
+        shape: 'pill',
+        color: 'gold',
+      },
     }
   },
-  mounted() {
-    console.log(data.cart)
-  },
+  mounted() {},
   methods: {
     handleCODPanel(value) {
       //place order
@@ -87,10 +106,10 @@ export default {
 
     handleStripePanel(value) {
       //place order
-      this.isOpenCOD = !value
+      this.isOpenStripe = !value
     },
     handleCloseStripePanel(value) {
-      this.isOpenCOD = !value
+      this.isOpenStripe = !value
     },
   },
 }
