@@ -47,10 +47,12 @@ export default {
   },
   props: ['isOpen'],
   methods: {
+    tokenCreated(token) {
+      console.log(token)
+    },
     handleClick() {
       this.$parent.handleStripePanel(!this.isOpen)
     },
-    //close panel
     handleClose() {
       this.$parent.handleCloseStripePanel(this.isOpen)
     },
