@@ -61,13 +61,10 @@ export default {
   methods: {
     tokenCreated(token) {
       console.log(token)
-      // handle the token
-      // send it to your server
     },
     handleClick() {
       this.$parent.handleStripePanel(!this.isOpen)
     },
-    //close panel
     handleClose() {
       this.$parent.handleCloseStripePanel(this.isOpen)
     },
