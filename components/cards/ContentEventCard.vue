@@ -46,8 +46,8 @@
       </p>
       <div class="d-flex flex-wrap">
         <p class="m-0 cursor-pointer" @click="handleWatchMovie">Watch</p>
-        <NuxtLink to="/merchandies"
-          ><p class="m-0 ml-2 cursor-pointer">Merchandies</p></NuxtLink
+        <NuxtLink to="/merchandise"
+          ><p class="m-0 ml-2 cursor-pointer">merchandise</p></NuxtLink
         >
       </div>
     </div>
@@ -90,6 +90,6 @@ export default {
   transition: 0.3s;
 }
 .content-event-card:hover {
-  margin: 20px;
+  margin: 10px;
 }
 </style>

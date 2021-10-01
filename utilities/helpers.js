@@ -1,3 +1,6 @@
+import keys from '../configurations/keys'
+import store from '../store'
+
 export default {
   fullName: (data) => {
     return data.firstName !== '' && data.lastName !== ''
@@ -8,6 +11,7 @@ export default {
       ? data.lastName
       : data.firstName + data.lastName
   },
+
   fullAlphabaticDate: () => {
     return new Date()
   },
@@ -16,17 +20,14 @@ export default {
     return new Date()
   },
 
-  apiMethod: async (path, method, body, authorization, url) => {
+  apiMethod: async (path, method, body, authorizationToken) => {
     try {
-      let apiUrl = url
-
-      if (!apiUrl) {
-        apiUrl = constants.BASE_URL + path
-      }
+      const apiUrl = keys.baseURL + path
+      // console.log(env)
       const headers = {}
 
-      if (authorization) {
-        headers.authorization = 'Bearer ' + authorization
+      if (authorizationToken) {
+        headers.authorization = authorizationToken
       }
 
       if (method !== 'GET') {
@@ -41,12 +42,13 @@ export default {
       if (body) {
         options['body'] = JSON.stringify(body)
       }
-
       const response = await fetch(apiUrl, options)
       const json = await response.json()
-      // console.log(json)
       if (response.status !== 200) {
-        throw new Error(json.message)
+        store().commit('common/errorMessage', {
+          message: json.error.message,
+          isOpen: true,
+        })
       }
 
       return await json

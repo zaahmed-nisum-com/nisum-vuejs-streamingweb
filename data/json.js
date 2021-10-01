@@ -1,5 +1,5 @@
 export const data = {
-  marchandies: [
+  merchandise: [
     {
       id: 1,
       title: 'x-cape',
@@ -255,6 +255,47 @@ export const data = {
       rating: '',
       category: ['actions'],
       intro: 'intro intro intro intro intro intro',
+    },
+  ],
+  userDashboardOptions: [
+    { id: 1, title: 'Content', path: '', icon: 'home' },
+    { id: 2, title: 'Wallet', path: '', icon: 'home' },
+    { id: 3, title: 'Downloads list', path: '', icon: 'home' },
+    { id: 4, title: 'Watched list', path: '', icon: 'home' },
+  ],
+  userContentList: [
+    {
+      id: 1,
+      title: 'title',
+      actors: ['a', 'b', 'c'],
+      directors: ['a', 'b', 'c'],
+      description: 'description',
+      isAdult: false,
+      category: '',
+      permissions: ['Read', 'Write', 'Download'],
+      isApproved: true,
+    },
+    {
+      id: 2,
+      title: 'title',
+      actors: ['a', 'b', 'c'],
+      directors: ['a', 'b', 'c'],
+      description: 'description',
+      isAdult: false,
+      category: '',
+      permissions: ['Read', 'Write'],
+      isApproved: true,
+    },
+    {
+      id: 3,
+      title: 'title',
+      actors: ['a', 'b', 'c'],
+      directors: ['a', 'b', 'c'],
+      description: 'description',
+      isAdult: true,
+      category: '',
+      permissions: ['Read', 'Write', 'Download'],
+      isApproved: false,
     },
   ],
 }

@@ -54,17 +54,20 @@ export default {
       '~/components/tables',
       '~/components/payment',
       '~/components/panels',
+      '~/components/portals',
     ],
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/dotenv',
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'portal-vue/nuxt',
     [
       'nuxt-fontawesome',
       {
@@ -73,10 +76,26 @@ export default {
             set: '@fortawesome/free-solid-svg-icons',
             icons: ['fas'],
           },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['fab'],
+          },
         ],
       },
     ],
   ],
+
+  publicRuntimeConfig: {
+    BASE_URL:
+      process.env.ENV_TYPE === 'localhost'
+        ? 'http://localhost:8001/'
+        : process.env.ENV_TYPE === 'development'
+        ? 'https://streaming-app-server.herokuapp.com/'
+        : 'https://streaming-app-server.herokuapp.com/',
+  },
+  privateRuntimeConfig: {
+    // apiSecret: process.env.API_SECRET,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

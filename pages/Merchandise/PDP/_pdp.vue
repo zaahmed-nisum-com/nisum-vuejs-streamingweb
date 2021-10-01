@@ -8,13 +8,15 @@
     <div class="product-details">
       <div class="d-flex flex-row">
         <div
-          v-for="color of data.marchandies[0].colors"
+          v-for="color of data.merchandise[0].colors"
           v-bind:key="color"
           @click="handleSelectColor(color)"
           class="p-2 m-2 border width-30 height-30 cursor-pointer"
           :class="'bg-' + color"
         >
           <Icon
+            style="font-size: 10px"
+            type="fas"
             v-if="color === item.color"
             iconName="check"
             className="align-self-center text-light"
@@ -23,7 +25,7 @@
       </div>
       <div class="d-flex flex-row">
         <div
-          v-for="size of data.marchandies[0].sizes"
+          v-for="size of data.merchandise[0].sizes"
           v-bind:key="size"
           @click="handleSelectSize(size)"
           class="p-3 m-2 border cursor-pointer"
@@ -39,32 +41,18 @@
     <div class="flex-column">
       <div class="rating">
         <h3>Rating</h3>
-        <div class="d-flex flex-row">
-          <div
-            v-for="(rating, index) of data.marchandies[0].ratings"
-            v-bind:key="rating"
-            class="p-2 d-flex align-self-center"
-          >
-            <Icon
-              v-for="item of Array.from(Array(index + 1))"
-              v-bind:key="item"
-              className="align-self-center text-dark"
-              iconName="star"
-            />
-            <span class="ml-1">{{ rating }}</span>
-          </div>
-        </div>
+        <Rating :ratings="data.merchandise[0].ratings" />
       </div>
       <div class="description">
         <h3>Description</h3>
         <p class="m-0">
-          {{ data.marchandies[0].description }}
+          {{ data.merchandise[0].description }}
         </p>
       </div>
       <div class="question-answers">
         <h3>Questins - Answers</h3>
         <div
-          v-for="qa of data.marchandies[0].questions_answers"
+          v-for="qa of data.merchandise[0].questions_answers"
           v-bind:key="qa"
           class="p-2"
         >
@@ -76,7 +64,7 @@
       <div class="reviews">
         <h3>Reviews</h3>
         <div
-          v-for="review of data.marchandies[0].reviews"
+          v-for="review of data.merchandise[0].reviews"
           v-bind:key="review"
           class="p-2"
         >
@@ -92,9 +80,19 @@
 <script>
 import { data } from '../../../data/json'
 import Button from '../../../components/buttons/Button.vue'
+import { merchandiseMiddleware } from '../../../middleware/merchandise'
+
 export default {
   components: { Button },
   layout: 'common',
+  computed: {
+    auth() {
+      return JSON.parse(JSON.stringify(this.$store.state.auth))
+    },
+    product() {
+      return JSON.parse(JSON.stringify(this.$store.state.merchandise.product))
+    },
+  },
   data: () => {
     return {
       item: { color: '', size: '', id: '' },
@@ -103,10 +101,19 @@ export default {
   },
 
   mounted() {
-    console.log(this.data.marchandies)
+    this.getProduct()
+    // console.log(this.$router.currentRoute)
+    console.log(this.product)
   },
   methods: {
-    handleClick() {},
+    getProduct() {
+      merchandiseMiddleware.getProductById()
+    },
+    handleClick() {
+      !this.auth.isLogin
+        ? this.$router.replace('/login')
+        : console.log(this.auth)
+    },
     handleSelectColor(value) {
       this.item.color = value
     },

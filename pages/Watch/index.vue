@@ -36,6 +36,13 @@ export default {
       videoUrl: 'https://www.youtube.com/watch?v=djNIgVy6WzQ',
     }
   },
+  methods: {
+    handleBack() {
+      console.log('handleBack')
+      console.log(this.$router)
+      this.$router.back()
+    },
+  },
 }
 </script>
 
