@@ -84,7 +84,6 @@ export default {
       },
     ],
   ],
-
   publicRuntimeConfig: {
     BASE_URL:
       process.env.ENV_TYPE === 'localhost'
