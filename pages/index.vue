@@ -31,6 +31,9 @@ export default {
       videoUrl: '',
     }
   },
+  mounted() {
+    this.videoUrl = data.browser[0].trailerUrl
+  },
   components: {
     YoutubePlayer,
   },
