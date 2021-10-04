@@ -19,7 +19,13 @@
             :icon="['fas', 'times-circle']"
           />
         </div>
-        <div class="modal-body"></div>
+        <div class="modal-body">
+          <stripe-element-card
+            ref="elementRef"
+            :pk="keys.NUXT_ENV_STRIPE_KEY"
+            @token="tokenCreated"
+          />
+        </div>
         <div class="modal-footer">
           <button
             type="button"
@@ -39,7 +45,13 @@
 </template>
 
 <script>
+import { StripeElementCard } from '@vue-stripe/vue-stripe'
+import keys from '../../../configurations/keys'
+
 export default {
+  components: {
+    StripeElementCard,
+  },
   data() {
     return {
       keys,
