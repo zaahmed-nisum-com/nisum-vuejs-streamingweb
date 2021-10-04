@@ -41,7 +41,7 @@
         <PayPal
           amount="10.00"
           currency="USD"
-          :clent="credentials"
+          :client="credentials"
           evn="sandbox"
           :button-style="styles"
         />
@@ -85,6 +85,7 @@ export default {
       isOpenStripe: false,
       credentials: {
         sandbox: keys.NUXT_ENV_PAYPAL_KEY,
+        production: keys.NUXT_ENV_PAYPAL_KEY,
       },
       styles: {
         label: 'checkout',
