@@ -84,7 +84,7 @@ export default {
       isOpenCOD: false,
       isOpenStripe: false,
       credentials: {
-        sandbox: keys.PAYPAL_SANDBOX_KEY,
+        sandbox: keys.NUXT_ENV_PAYPAL_KEY,
       },
       styles: {
         label: 'checkout',
