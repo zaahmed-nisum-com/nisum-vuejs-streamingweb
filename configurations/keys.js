@@ -6,7 +6,7 @@ const keys = {
 keys.NUXT_ENV_PAYPAL_KEY = process.env.NUXT_ENV_PAYPAL_KEY
 keys.NUXT_ENV_PAYPAL_KEY = process.env.NUXT_ENV_PAYPAL_KEY
 console.log('ENV_ENVIRONMENT::', process.env.ENV_ENVIRONMENT)
-console.log('NUXT_ENV_KEY::', NUXT_ENV_KEY)
+console.log('NUXT_ENV_KEY::', process.env.NUXT_ENV_KEY)
 if (process.env.ENV_ENVIRONMENT === 'localhost') {
   keys.baseURL = constants.localBaseUrl
 }
