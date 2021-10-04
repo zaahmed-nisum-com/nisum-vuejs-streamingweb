@@ -43,6 +43,7 @@
 <script>
 import Button from '../../components/buttons/Button.vue'
 import { authMiddleware } from '../../middleware/auth'
+import { loginMixin } from './mixins'
 export default {
   data() {
     return {
@@ -50,6 +51,7 @@ export default {
       password: '',
     }
   },
+  mixins: [loginMixin],
   components: {
     Button,
   },
