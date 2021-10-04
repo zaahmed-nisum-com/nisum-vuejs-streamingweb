@@ -4,7 +4,9 @@ const keys = {
   baseURL: constants.localBaseUrl,
 }
 keys.PAYPAL_SANDBOX_KEY = process.env.PAYPAL_SANDBOX_KEY
+console.log('ENVRIONEMENT::: ', process.env)
 console.log(process.env.enviroment)
+console.log(process.env.TEST_KEY)
 console.log(process.env.HOST)
 console.log(process.env.STRIPE_PUBLIC_DUMMY_KEY)
 console.log(process.env.PAYPAL_SANDBOX_KEY)
