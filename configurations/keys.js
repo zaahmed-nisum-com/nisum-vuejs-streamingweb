@@ -5,6 +5,7 @@ const keys = {
 }
 keys.PAYPAL_SANDBOX_KEY = process.env.PAYPAL_SANDBOX_KEY
 console.log('ENVRIONEMENT::: ', process.env)
+console.log('NUXT_ENV_MY_VARIABLE::', process.env.NUXT_ENV_MY_VARIABLE)
 console.log(process.env.enviroment)
 console.log(process.env.TEST_KEY)
 console.log(process.env.HOST)
