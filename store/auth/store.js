@@ -2,10 +2,23 @@ export default {
   namespaced: true,
   state: {
     isLogin: false,
-    Token: '',
-    auth: { email: '', firstName: '', lastName: '' },
+    token: '',
+    auth: {},
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    login(state, data) {
+      state.isLogin = true
+      state.token = data.data[0].token
+      state.auth = data.data[0]
+      data.router.replace('/')
+    },
+    logout(state, data) {
+      state.isLogin = false
+      state.token = ''
+      state.auth = {}
+      data.router.replace('/login')
+    },
+  },
   actions: {},
 }

@@ -57,7 +57,10 @@ export default {
   },
   methods: {
     handleClick() {
-      authMiddleware.login({ email: this.email, password: this.password })
+      authMiddleware.login(
+        { email: this.email, password: this.password },
+        this.$router
+      )
     },
   },
 }

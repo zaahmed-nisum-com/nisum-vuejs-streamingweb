@@ -23,8 +23,20 @@ export const merchandiseMiddleware = {
         null,
         null
       )
-      console.log(response.data)
       store().commit('merchandise/setProduct', {})
     } catch (error) {}
+  },
+  createMerchandise: async (data) => {
+    try {
+      const response = await utilities.apiMethod(
+        'merchandise/',
+        'POST',
+        { ...data },
+        null
+      )
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   },
 }

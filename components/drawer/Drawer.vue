@@ -11,7 +11,7 @@
     </div>
     <div class="logout-drawer-container">
       <div class="p-3 border rounded">
-        <p class="m-0">Logout</p>
+        <p @click="handleLogout" class="m-0">Logout</p>
       </div>
       <div class="line-seperater border-bottom m-2" />
     </div>
@@ -20,6 +20,7 @@
 
 <script>
 import constants from '../../configurations/constants'
+import store from '../../store'
 export default {
   data: () => {
     return {
@@ -31,6 +32,11 @@ export default {
       return JSON.parse(JSON.stringify(this.$store.state.common))
     },
   },
+  methods: {
+    handleLogout() {
+      store().commit('auth/logout', { router: this.$router })
+    },
+  },
 }
 </script>
 
@@ -38,6 +44,7 @@ export default {
 .drawer-main {
   width: 300px;
   position: absolute;
+  z-index: 1000;
   height: 100vh;
   margin: 57px 0px;
 }

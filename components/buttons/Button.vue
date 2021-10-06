@@ -21,9 +21,8 @@ export default {
 .btn-all {
   border: 0px;
   padding: 10px;
-  width: 100px;
+  width: fit-content;
   padding: 10px;
-  width: 100px;
   box-shadow: 1px 1px 5px -2px grey;
 }
 </style>

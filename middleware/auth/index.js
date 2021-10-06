@@ -3,16 +3,28 @@ import store from '../../store'
 import utilities from '../../utilities/helpers'
 
 export const authMiddleware = {
-  login: async (data) => {
+  login: async (data, router) => {
     try {
-      await utilities.apiMethod('auth/login', 'POST', data, null)
+      const response = await utilities.apiMethod(
+        'auth/login',
+        'POST',
+        data,
+        null
+      )
+      !response.isError &&
+        store().commit('auth/login', { data: response.data, router })
     } catch (error) {
       console.log(error)
     }
   },
   signUp: async (data) => {
     try {
-      await utilities.apiMethod('auth/signup', 'POST', data, null)
+      const response = await utilities.apiMethod(
+        'auth/signup',
+        'POST',
+        data,
+        null
+      )
     } catch (error) {
       console.log(error)
     }

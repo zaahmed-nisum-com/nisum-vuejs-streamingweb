@@ -45,6 +45,7 @@ export default {
       const response = await fetch(apiUrl, options)
       const json = await response.json()
       if (response.status !== 200) {
+        console.log(json)
         store().commit('common/errorMessage', {
           message: json.error.message,
           isOpen: true,
