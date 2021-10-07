@@ -2,31 +2,35 @@ import store from '../../store'
 import utilities from '../../utilities/helpers'
 
 export const merchandiseMiddleware = {
-  getAllMerchandiseById: async () => {
-    console.log('getAllMerchandiseById')
+  getMerchandiseByUserId: async (data) => {
     try {
       const response = await utilities.apiMethod(
-        'merchandise/',
+        `merchandise/${data.user}`,
         'GET',
         null,
         null
       )
-      console.log(response.data)
-      store().commit('merchandise/setMerchandise', [])
+      store().commit(
+        'merchandise/setMerchandise',
+        response.data[0]._doc !== undefined
+          ? [{ ...response.data[0]._doc }]
+          : []
+      )
     } catch (error) {}
   },
-  getProductById: async () => {
+  getProductByUserAndMerchandiseId: async (data) => {
     try {
       const response = await utilities.apiMethod(
-        'merchandise/product/',
+        `product/${data.user}&${data.merchandiseId}`,
         'GET',
         null,
         null
       )
-      store().commit('merchandise/setProduct', {})
+      console.log(response)
+      // store().commit('merchandise/setProduct', {})
     } catch (error) {}
   },
-  createMerchandise: async (data) => {
+  createMerchandise: async (data, router) => {
     try {
       const response = await utilities.apiMethod(
         'merchandise/',
@@ -34,7 +38,7 @@ export const merchandiseMiddleware = {
         { ...data },
         null
       )
-      console.log(response)
+      !response.isError && location.reload()
     } catch (error) {
       console.log(error)
     }

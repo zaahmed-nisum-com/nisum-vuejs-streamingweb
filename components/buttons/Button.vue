@@ -8,10 +8,11 @@
 
 <script>
 export default {
-  props: ['title'],
+  props: ['title', 'handleCreateproduct'],
   methods: {
     handleClick() {
-      this.$parent.handleClick()
+      this.$emit('created')
+      // this.$parent.handleClick()
     },
   },
 }

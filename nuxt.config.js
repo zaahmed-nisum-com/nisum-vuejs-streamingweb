@@ -43,7 +43,7 @@ export default {
   css: ['@/assets/css/style.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/youtube'],
+  plugins: ['@/plugins/youtube', '~plugins/filters.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
