@@ -44,7 +44,7 @@
           >Check me out</label
         >
       </div>
-      <Button title="Register" />
+      <Button title="Register" @created="handleClick" />
       <NuxtLink to="/login"
         ><p class="m-0 text-white mt-2 cursor-pointer">
           Already has a account

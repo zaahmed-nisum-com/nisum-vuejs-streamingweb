@@ -18,7 +18,7 @@ export const merchandiseMiddleware = {
       )
     } catch (error) {}
   },
-  getProductByUserAndMerchandiseId: async (data) => {
+  getAllProductByUserAndMerchandiseId: async (data) => {
     try {
       const response = await utilities.apiMethod(
         `product/${data.user}&${data.merchandiseId}`,
@@ -28,6 +28,11 @@ export const merchandiseMiddleware = {
       )
       console.log(response)
       // store().commit('merchandise/setProduct', {})
+    } catch (error) {}
+  },
+  getSingleProductById: async (data) => {
+    try {
+      store().commit('merchandise/setProduct', data)
     } catch (error) {}
   },
   createMerchandise: async (data, router) => {

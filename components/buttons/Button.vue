@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center" :style="styles">
     <button class="btn-all border rounded" @click="handleClick">
       {{ title }}
     </button>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ['title', 'handleCreateproduct'],
+  props: ['title', 'handleCreateproduct', 'styles'],
   methods: {
     handleClick() {
       this.$emit('created')

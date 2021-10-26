@@ -8,7 +8,7 @@
     <div class="product-details">
       <div class="d-flex flex-row">
         <div
-          v-for="color of data.merchandise[0].colors"
+          v-for="color of product.colors"
           v-bind:key="color"
           @click="handleSelectColor(color)"
           class="p-2 m-2 border width-30 height-30 cursor-pointer"
@@ -25,7 +25,7 @@
       </div>
       <div class="d-flex flex-row">
         <div
-          v-for="size of data.merchandise[0].sizes"
+          v-for="size of product.sizes"
           v-bind:key="size"
           @click="handleSelectSize(size)"
           class="p-3 m-2 border cursor-pointer"
@@ -35,24 +35,24 @@
         </div>
       </div>
       <div style="float: left">
-        <Button title="Add to cart" />
+        <Button title="Add to cart" @created="handleClick" />
       </div>
     </div>
     <div class="flex-column">
       <div class="rating">
         <h3>Rating</h3>
-        <Rating :ratings="data.merchandise[0].ratings" />
+        <Rating :ratings="product.ratings" />
       </div>
       <div class="description">
         <h3>Description</h3>
         <p class="m-0">
-          {{ data.merchandise[0].description }}
+          {{ product.description }}
         </p>
       </div>
       <div class="question-answers">
         <h3>Questins - Answers</h3>
         <div
-          v-for="qa of data.merchandise[0].questions_answers"
+          v-for="qa of product.questions_answers"
           v-bind:key="qa"
           class="p-2"
         >
@@ -63,11 +63,7 @@
       </div>
       <div class="reviews">
         <h3>Reviews</h3>
-        <div
-          v-for="review of data.merchandise[0].reviews"
-          v-bind:key="review"
-          class="p-2"
-        >
+        <div v-for="review of product.reviews" v-bind:key="review" class="p-2">
           <div>{{ review.user }}</div>
           <div>{{ review.review }}</div>
           <div class="border-bottom" />
@@ -78,9 +74,9 @@
 </template>
 
 <script>
-import { data } from '../../../data/json'
 import Button from '../../../components/buttons/Button.vue'
 import { merchandiseMiddleware } from '../../../middleware/merchandise'
+import store from '../../../store'
 
 export default {
   components: { Button },
@@ -96,23 +92,26 @@ export default {
   data: () => {
     return {
       item: { color: '', size: '', id: '' },
-      data: JSON.parse(JSON.stringify(data)),
     }
   },
 
   mounted() {
+    this.item.id = this.$route.query.id
     this.getProduct()
-    // console.log(this.$router.currentRoute)
-    console.log(this.product)
   },
   methods: {
     getProduct() {
-      merchandiseMiddleware.getProductById()
+      merchandiseMiddleware.getSingleProductById({ id: this.item.id })
     },
     handleClick() {
-      !this.auth.isLogin
-        ? this.$router.replace('/login')
-        : console.log(this.auth)
+      if (this.auth.isLogin) {
+        this.$router.replace('/login')
+      } else {
+        store().commit('cart_checkout/addToCart', {
+          ...this.item,
+          itemId: this.item.color + this.item.size + this.item.id,
+        })
+      }
     },
     handleSelectColor(value) {
       this.item.color = value

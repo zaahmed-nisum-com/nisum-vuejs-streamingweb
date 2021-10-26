@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex flex-row flex-wrap justify-content-center">
-      <div v-for="item of this.data.merchandise" v-bind:key="item.id">
+      <div v-for="item of this.products" v-bind:key="item.id">
         <div class="merchandise-item m-4 border rounded">
           <!-- <nuxt-link :to="{ path: 'merchandies/pdp/', query: { data: item } }"> -->
           <Img
@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import { data } from '../../data/json'
 import Button from '../../components/buttons/Button.vue'
 import { merchandiseMiddleware } from '../../middleware/merchandise'
 
@@ -61,24 +60,16 @@ export default {
     auth() {
       return JSON.parse(JSON.stringify(this.$store.state.auth))
     },
-    merchandise() {
-      return JSON.parse(
-        JSON.stringify(this.$store.state.merchandise.merchandise)
-      )
+    products() {
+      return JSON.parse(JSON.stringify(this.$store.state.merchandise.products))
     },
   },
-  data: () => {
-    return {
-      data: JSON.parse(JSON.stringify(data)),
-    }
-  },
   mounted() {
-    this.getMerchandies()
-    console.log(this.merchandise)
+    this.getProductsByMerchandiseId()
   },
   methods: {
-    getMerchandies() {
-      merchandiseMiddleware.getAllMerchandiseById()
+    getProductsByMerchandiseId() {
+      merchandiseMiddleware.getAllProductByUserAndMerchandiseId()
     },
     handleClick() {},
   },

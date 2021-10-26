@@ -29,7 +29,7 @@
             >Check me out</label
           >
         </div>
-        <Button title="Login" />
+        <Button title="Login" @created="handleClick" />
       </div>
       <NuxtLink to="/signup"
         ><p class="m-0 text-white mt-2 cursor-pointer">

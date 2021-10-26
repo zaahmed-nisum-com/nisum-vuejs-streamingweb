@@ -51,8 +51,8 @@ export default {
         this.$router
       )
     },
-    handleGetProductsByMerchandiseid() {
-      merchandiseMiddleware.getProductByUserAndMerchandiseId(
+    handleGetProductsByUserAndMerchandiseid() {
+      merchandiseMiddleware.getAllProductByUserAndMerchandiseId(
         {
           user: '615d5ed0703dd5af0e29825a',
           merchandiseId: '615ee4b2da27c690d60eb845',

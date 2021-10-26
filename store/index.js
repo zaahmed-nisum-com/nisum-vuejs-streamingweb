@@ -8,6 +8,7 @@ import category from './category/store'
 import common from './common/store'
 import subscription from './subscription/store'
 import merchandise from './merchandise/store'
+import cart_checkout from './cart-checkout/store'
 
 Vue.use(Vuex)
 
@@ -22,6 +23,7 @@ const store = () =>
       common,
       subscription,
       merchandise,
+      cart_checkout,
     },
   })
 
