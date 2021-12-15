@@ -5,30 +5,42 @@
       <h4>Your Cart</h4>
     </div>
     <div>
-      <div v-for="(item, index) of data.cart.items" v-bind:key="index + 1">
+      <!-- <div v-for="(cart, index) in data_" v-bind:key="index + 1">
         <div>
-          <p>{{ item.productId }}</p>
-          <div v-for="(varient, index) of item.varients" v-bind:key="index + 1">
-            <div class="d-flex">
-              <Img
-                style="width: 100px; height: 100px"
-                :url="varient.picture"
-                :src="varient.picture"
+          <p>{{ cart }}</p>
+        </div>
+      </div> -->
+      <div v-for="(item, index) in cart" v-bind:key="index + 1">
+        <div>
+          <p>{{ item.itemId }}</p>
+          <div>
+            <Img
+              style="width: 100px; height: 100px"
+              :url="item.product.picture"
+              :src="item.product.picture"
+            />
+            <div class="p-2">
+              <p class="m-0">
+                Detials : <span>{{ item.product.description }}</span>
+              </p>
+              <p class="m-0">
+                Price : <span>{{ item.product.price }}</span>
+              </p>
+              <p class="m-0">
+                <span class=""> Size : {{ item.size }}</span>
+                <span class="">color : {{ item.color }}</span>
+              </p>
+              <Merchandisecounter
+                v-bind:counter="item.count"
+                @handleSubProduct="handleSubProduct(item.itemId)"
+                @handleAddProduct="handleAddProduct(item.itemId)"
               />
-              <div class="p-2">
-                <p class="m-0">
-                  Detials : <span>{{ varient.description }}</span>
-                </p>
-                <p class="m-0">
-                  Price : <span>{{ varient.price }}</span>
-                </p>
-                <p class="m-0">
-                  <span class=""> Size : {{ varient.details.size }}</span>
-                  <span class="">color : {{ varient.details.color }}</span>
-                </p>
-                <Merchandisecounter />
-                <p class="m-0 cursor-pointer"><ins>Update</ins></p>
-              </div>
+              <p
+                class="m-0 cursor-pointer"
+                @click="handleUpdateCart(item.itemId)"
+              >
+                <ins>Update</ins>
+              </p>
             </div>
           </div>
         </div>
@@ -66,21 +78,25 @@
         <Stripe :isOpen="isOpenStripe" />
       </div>
     </div>
+      <!-- {{ data_ }} -->
   </div>
 </template>
 
 <script>
 import keys from '../../configurations/keys'
-import { data } from '../../data/json'
+// import { data } from '../../data/json'
 import PayPal from 'vue-paypal-checkout'
+import store from '../../store'
+
 export default {
   layout: 'common',
   components: {
     PayPal,
   },
-  data: () => {
+  data() {
     return {
-      data: JSON.parse(JSON.stringify(data)),
+      // data_: this.cart,
+      // data: JSON.parse(JSON.stringify(data)),
       isOpenCOD: false,
       isOpenStripe: false,
       credentials: {
@@ -95,7 +111,17 @@ export default {
       },
     }
   },
-  mounted() {},
+  computed: {
+    cart_checkout() {
+      return JSON.parse(JSON.stringify(this.$store.state.cart_checkout))
+    },
+    cart() {
+      return JSON.parse(JSON.stringify(this.$store.state.cart_checkout.cart))
+    },
+  },
+  mounted() {
+    console.log(this.cart_checkout)
+  },
   methods: {
     handleCODPanel(value) {
       //place order
@@ -104,13 +130,22 @@ export default {
     handleCloseCODPanel(value) {
       this.isOpenCOD = !value
     },
-
     handleStripePanel(value) {
       //place order
       this.isOpenStripe = !value
     },
     handleCloseStripePanel(value) {
       this.isOpenStripe = !value
+    },
+    handleAddProduct(id) {
+      this.cart[id].count++
+    },
+    handleSubProduct(id) {
+      this.cart[id].count--
+    },
+    handleUpdateCart(id) {
+      this.cart_checkout.cart = { ...this.cart }
+      store().commit('cart_checkout/updateCart', this.cart)
     },
   },
 }

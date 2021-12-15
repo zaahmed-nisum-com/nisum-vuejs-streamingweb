@@ -9,11 +9,16 @@ import common from './common/store'
 import subscription from './subscription/store'
 import merchandise from './merchandise/store'
 import cart_checkout from './cart-checkout/store'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+})
+
 const store = () =>
-  new Store({
+  new Vuex.Store({
     modules: {
       auth,
       user,
@@ -25,6 +30,7 @@ const store = () =>
       merchandise,
       cart_checkout,
     },
+    plugins: [vuexLocal.plugin],
   })
 
 export default store

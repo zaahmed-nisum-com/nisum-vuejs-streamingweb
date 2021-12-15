@@ -8,6 +8,7 @@ export default {
   getters: {},
   mutations: {
     login(state, data) {
+      console.log(data)
       state.isLogin = true
       state.token = data.data[0].token
       state.auth = data.data[0]

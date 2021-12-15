@@ -23,6 +23,7 @@
           <div class="input-group mb-3">
             <input
               type="text"
+              v-model="fullName"
               class="form-control"
               placeholder="Full Name"
               aria-label="Full Name"
@@ -32,6 +33,7 @@
           <div class="input-group mb-3">
             <input
               type="email"
+              v-model="email"
               class="form-control"
               placeholder="Email"
               aria-label="email"
@@ -41,6 +43,17 @@
           <div class="input-group mb-3">
             <input
               type="number"
+              v-model="phoneNo"
+              class="form-control"
+              placeholder="Phone no"
+              aria-label="Phone no"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              v-model="pinLocationUrl"
               class="form-control"
               placeholder="Phone no"
               aria-label="Phone no"
@@ -50,6 +63,7 @@
           <div class="input-group mb-3">
             <textarea
               type="text"
+              v-model="address"
               class="form-control"
               placeholder="Address"
               aria-label="address"
@@ -76,11 +90,36 @@
 </template>
 
 <script>
+import store from '../../../store'
 export default {
   props: ['isOpen'],
+  data() {
+    return {
+      fullName: '',
+      email: '',
+      phoneNo: '',
+      address: '',
+      pinLocationUrl: '',
+    }
+  },
+  computed: {
+    cart() {
+      return JSON.parse(JSON.stringify(this.$store.state.cart_checkout.cart))
+    },
+  },
   methods: {
     handleClick() {
-      this.$parent.handleCODPanel(this.isOpen)
+      const data = {
+        fullName: this.fullName,
+        email: this.email,
+        phoneNo: this.phoneNo,
+        address: this.address,
+        pinLocationUrl: this.pinLocationUrl,
+        orderCart:{...this.cart},
+        router: this.$router
+      }
+      store().commit('cart_checkout/placeOrder', data)
+      // this.$parent.handleCODPanel(this.isOpen)
     },
     //close panel
     handleClose() {

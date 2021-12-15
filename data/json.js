@@ -8,6 +8,7 @@ export const data = {
       isDiscounted: false,
       isCopounAccept: false,
       user: '',
+      picture:'https://picsum.photos/200',
       isInStock: true,
       colors: ['red', 'green'],
       sizes: ['S', 'M', 'L'],
@@ -31,6 +32,7 @@ export const data = {
       isDiscounted: false,
       isCopounAccept: false,
       user: '',
+      picture:'https://picsum.photos/200',
       isInStock: true,
       colors: ['red', 'green'],
       sizes: ['S', 'M', 'L'],
@@ -54,6 +56,7 @@ export const data = {
       isDiscounted: false,
       isCopounAccept: false,
       user: '',
+      picture:'https://picsum.photos/200',
       isInStock: true,
       colors: ['red', 'green'],
       sizes: ['S', 'M', 'L'],
@@ -76,6 +79,7 @@ export const data = {
       price: '10',
       isDiscounted: false,
       isCopounAccept: false,
+      picture:'https://picsum.photos/200',
       user: '',
       isInStock: true,
       colors: ['red', 'green'],
@@ -99,6 +103,7 @@ export const data = {
       price: '10',
       isDiscounted: false,
       isCopounAccept: false,
+      picture:'https://picsum.photos/200',
       user: '',
       isInStock: true,
       colors: ['red', 'green'],
@@ -117,62 +122,62 @@ export const data = {
     },
   ],
   cart: {
-    items: [
-      {
-        productId: 'productId',
-        varients: [
-          {
-            picture: 'https://picsum.photos/200',
-            varentId: '',
-            description: 'details details details',
-            quantity: 1,
-            details: {
-              size: 'size',
-              color: 'color',
-            },
-            price: 10,
-          },
-          {
-            varentId: '',
-            picture: 'https://picsum.photos/200',
-            details: {
-              size: '',
-              color: '',
-            },
-            price: 10,
-          },
-        ],
-      },
-      {
-        productId: 'productId',
-        varients: [
-          {
-            picture: 'https://picsum.photos/200',
-            varentId: '',
-            description: 'details details details',
-            quantity: 1,
-            details: {
-              size: 'size',
-              color: 'color',
-            },
-            price: 10,
-          },
-          {
-            varentId: '',
-            picture: 'https://picsum.photos/200',
-            details: {
-              size: '',
-              color: '',
-            },
-            price: 10,
-          },
-        ],
-      },
-    ],
-    total: '',
-    discount: '',
-    deliveryCharges: '',
-    subtotal: '',
+    // items: [
+    //   {
+    //     productId: 'productId',
+    //     varients: [
+    //       {
+    //         picture: 'https://picsum.photos/200',
+    //         varentId: '',
+    //         description: 'details details details',
+    //         quantity: 1,
+    //         details: {
+    //           size: 'size',
+    //           color: 'color',
+    //         },
+    //         price: 10,
+    //       },
+    //       {
+    //         varentId: '',
+    //         picture: 'https://picsum.photos/200',
+    //         details: {
+    //           size: '',
+    //           color: '',
+    //         },
+    //         price: 10,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     productId: 'productId',
+    //     varients: [
+    //       {
+    //         picture: 'https://picsum.photos/200',
+    //         varentId: '',
+    //         description: 'details details details',
+    //         quantity: 1,
+    //         details: {
+    //           size: 'size',
+    //           color: 'color',
+    //         },
+    //         price: 10,
+    //       },
+    //       {
+    //         varentId: '',
+    //         picture: 'https://picsum.photos/200',
+    //         details: {
+    //           size: '',
+    //           color: '',
+    //         },
+    //         price: 10,
+    //       },
+    //     ],
+    //   },
+    // ],
+    // total: '',
+    // discount: '',
+    // deliveryCharges: '',
+    // subtotal: '',
   },
   subscriptionPlans: [
     {

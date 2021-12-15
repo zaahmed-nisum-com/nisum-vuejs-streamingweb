@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   state: {
     cart: {},
+    order: [],
   },
   getters: {},
   mutations: {
@@ -13,8 +14,21 @@ export default {
         state.cart[data.itemId] = { ...data, count: 1 }
       }
     },
-    removeFromCart(state, data) {
+    updateCart(state, data) {
+      console.log(state)
       console.log(data)
+      state.cart = { ...data }
+    },
+    placeOrder(state, data) {
+      console.log(data)
+      const order = {
+        id: Math.floor(Math.random() * 10000000),
+        orderItem: { ...data.orderCart },
+        createdDate:new Date()
+      }
+      console.log(order)
+      state.order.push(order)
+      data.router.replace('/myorders');
     },
   },
   actions: {},

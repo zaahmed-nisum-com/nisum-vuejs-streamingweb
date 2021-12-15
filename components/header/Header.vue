@@ -27,6 +27,13 @@
       >
         <ul class="d-inline-flex text-light m-0 p-0">
           <li v-if="auth.isLogin" class="d-block pr-2">Dashboard</li>
+          <li
+            v-if="auth.isLogin"
+            class="d-block pr-2 cursor-pointer"
+            @click="handleLogout"
+          >
+            Logout
+          </li>
         </ul>
       </div>
       <div
@@ -52,7 +59,7 @@
         </div>
         <div v-if="auth.isLogin" class="user-cart-icon">
           <div class="mini-cart-counter">
-            <p class="m-0">2</p>
+            <p class="m-0">{{ Object.keys(cartCounter).length }}</p>
           </div>
           <NuxtLink to="/checkout">
             <Icon
@@ -69,6 +76,7 @@
 
 <script>
 import theme from '../../configurations/theme'
+import store from '../../store'
 export default {
   data() {
     return {
@@ -83,8 +91,10 @@ export default {
     auth() {
       return JSON.parse(JSON.stringify(this.$store.state.auth))
     },
+    cartCounter() {
+      return JSON.parse(JSON.stringify(this.$store.state.cart_checkout.cart))
+    },
   },
-
   watch: {
     windowHeight(newHeight, oldHeight) {},
     windowWidth(newWidth, oldWidth) {
@@ -98,9 +108,13 @@ export default {
   },
 
   mounted() {
+    console.log(this.cartCounter, 'cartCounter')
     this.$nextTick(() => {
       window.addEventListener('resize', this.onResize)
     })
+  },
+  updated() {
+    console.log(this.cartCounter, 'cartCounter')
   },
 
   beforeDestroy() {
@@ -114,6 +128,9 @@ export default {
     },
     toggleDrawer() {
       this.$store.commit('common/toggleDrawer')
+    },
+    handleLogout() {
+      store().commit('auth/logout', { router: this.$router })
     },
   },
 }

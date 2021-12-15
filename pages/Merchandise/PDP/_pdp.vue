@@ -88,6 +88,9 @@ export default {
     product() {
       return JSON.parse(JSON.stringify(this.$store.state.merchandise.product))
     },
+    cart() {
+      return JSON.parse(JSON.stringify(this.$store.state.cart_checkout.cart))
+    },
   },
   data: () => {
     return {
@@ -99,16 +102,21 @@ export default {
     this.item.id = this.$route.query.id
     this.getProduct()
   },
+  updated(){
+    console.log(this.cart)
+  },
   methods: {
     getProduct() {
       merchandiseMiddleware.getSingleProductById({ id: this.item.id })
     },
     handleClick() {
-      if (this.auth.isLogin) {
+      console.log(this.auth.isLogin)
+      if (!this.auth.isLogin) {
         this.$router.replace('/login')
       } else {
         store().commit('cart_checkout/addToCart', {
           ...this.item,
+          product: this.product,
           itemId: this.item.color + this.item.size + this.item.id,
         })
       }
