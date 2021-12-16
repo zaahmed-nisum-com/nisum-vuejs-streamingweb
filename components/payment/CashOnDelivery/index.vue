@@ -116,7 +116,8 @@ export default {
         address: this.address,
         pinLocationUrl: this.pinLocationUrl,
         orderCart:{...this.cart},
-        router: this.$router
+        router: this.$router,
+        createdDate:new Date()
       }
       store().commit('cart_checkout/placeOrder', data)
       // this.$parent.handleCODPanel(this.isOpen)

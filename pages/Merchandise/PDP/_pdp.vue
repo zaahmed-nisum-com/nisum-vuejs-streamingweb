@@ -6,6 +6,7 @@
       </div>
     </div>
     <div class="product-details">
+      {{product}}
       <div class="d-flex flex-row">
         <div
           v-for="color of product.colors"
@@ -102,7 +103,7 @@ export default {
     this.item.id = this.$route.query.id
     this.getProduct()
   },
-  updated(){
+  updated() {
     console.log(this.cart)
   },
   methods: {
@@ -117,7 +118,7 @@ export default {
         store().commit('cart_checkout/addToCart', {
           ...this.item,
           product: this.product,
-          itemId: this.item.color + this.item.size + this.item.id,
+          itemId: this.item.color + '-' + this.item.size + '-' + this.item.id,
         })
       }
     },

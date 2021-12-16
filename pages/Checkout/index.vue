@@ -10,7 +10,12 @@
           <p>{{ cart }}</p>
         </div>
       </div> -->
-      <div v-for="(item, index) in cart" v-bind:key="index + 1">
+      <p>{{ cart }}</p>
+      {{ data_ }}
+      <div
+        v-for="(item, index) in this.data_"
+        v-bind:key="index + item.itemId + 1"
+      >
         <div>
           <p>{{ item.itemId }}</p>
           <div>
@@ -78,7 +83,7 @@
         <Stripe :isOpen="isOpenStripe" />
       </div>
     </div>
-      <!-- {{ data_ }} -->
+    <!-- {{ data_ }} -->
   </div>
 </template>
 
@@ -95,7 +100,7 @@ export default {
   },
   data() {
     return {
-      // data_: this.cart,
+      data_: [],
       // data: JSON.parse(JSON.stringify(data)),
       isOpenCOD: false,
       isOpenStripe: false,
@@ -120,8 +125,9 @@ export default {
     },
   },
   mounted() {
-    console.log(this.cart_checkout)
+    this.data_ = this.cart
   },
+  
   methods: {
     handleCODPanel(value) {
       //place order
@@ -138,14 +144,17 @@ export default {
       this.isOpenStripe = !value
     },
     handleAddProduct(id) {
-      this.cart[id].count++
+      this.data_[id].count++
     },
     handleSubProduct(id) {
-      this.cart[id].count--
+      this.data_[id].count--
     },
     handleUpdateCart(id) {
-      this.cart_checkout.cart = { ...this.cart }
-      store().commit('cart_checkout/updateCart', this.cart)
+      // console.log(id)
+      if (this.data_[id].count === 0) {
+        delete this.data_[id]
+      }
+      store().commit('cart_checkout/updateCart', this.data_)
     },
   },
 }
