@@ -1,3 +1,4 @@
+import { data as data_ } from '../../data/json'
 export default {
   namespaced: true,
   state: {
@@ -23,6 +24,17 @@ export default {
         createdDate: new Date(),
       }
       state.orders.push(order)
+      data_.ordertTracking.push({
+        id: Math.floor(Math.random() * 10000000),
+        orderId: order.id,
+        status: 'pending',
+        createdDate: new Date(),
+        details: {
+          distination: '',
+          currentPosition: '',
+        },
+      })
+      console.log(data_.ordertTracking)
       data.router.replace('/myorders')
     },
   },

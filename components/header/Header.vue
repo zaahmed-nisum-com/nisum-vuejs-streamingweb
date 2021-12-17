@@ -57,6 +57,7 @@
             iconName="user-circle"
           />
         </div>
+        <NavBarDropDown />
         <div v-if="auth.isLogin" class="user-cart-icon">
           <div class="mini-cart-counter">
             <p class="m-0">{{ Object.keys(cartCounter).length }}</p>
@@ -76,8 +77,12 @@
 
 <script>
 import theme from '../../configurations/theme'
+import NavBarDropDown from '../navbardropdown/NavBarDropDown.vue'
 import store from '../../store'
 export default {
+  components: {
+    NavBarDropDown,
+  },
   data() {
     return {
       windowHeight: window.innerHeight,

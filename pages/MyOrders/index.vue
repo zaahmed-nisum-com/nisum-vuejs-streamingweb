@@ -1,12 +1,12 @@
 <template>
   <div class="container-myorder">
-    <h2>My Orders</h2>
+    <h2 class="text-3xl">My Orders</h2>
     <div
       class="p-2"
       v-for="(item, index) of this.myOrders"
       v-bind:key="index + 1"
     >
-      <div class="border-bottom border-black" v-if="index > 0" />
+      <div class="border-bottom  border-black" v-if="index > 0" />
       <p>Order id: {{ item.id }}</p>
       <div
         class="p-2 d-flex"
@@ -44,6 +44,7 @@
 <script>
 import store from '../../store'
 export default {
+  layout: 'common',
   computed: {
     myOrders() {
       return JSON.parse(JSON.stringify(this.$store.state.cart_checkout.orders))

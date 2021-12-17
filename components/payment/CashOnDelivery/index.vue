@@ -55,8 +55,8 @@
               type="text"
               v-model="pinLocationUrl"
               class="form-control"
-              placeholder="Phone no"
-              aria-label="Phone no"
+              placeholder="pin location link"
+              aria-label="pinLocationUrl"
               aria-describedby="basic-addon1"
             />
           </div>
