@@ -2,8 +2,7 @@
   <div>
     <div class="d-flex flex-row flex-wrap justify-content-center">
       <div v-for="item of this.products" v-bind:key="item.id">
-        {{item}}
-        <div class="merchandise-item m-4 border rounded">
+        <div v-if="item.isComboProduct" class="merchandise-item m-4 p-2 border rounded">
           <!-- <nuxt-link :to="{ path: 'merchandies/pdp/', query: { data: item } }"> -->
           <Img
             @click="
@@ -41,7 +40,7 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="my-2">
             <p class="p-2 border border-opacity-25 w-fit rounded" v-if="item.isComboProduct">Combo Product</p>
           </div>
           <div>
@@ -54,8 +53,8 @@
 </template>
 
 <script>
-import Button from '../../components/buttons/Button.vue'
-import { merchandiseMiddleware } from '../../middleware/merchandise'
+import Button from '../../../components/buttons/Button.vue'
+import { merchandiseMiddleware } from '../../../middleware/merchandise'
 
 export default {
   layout: 'common',
@@ -80,8 +79,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.merchandise-item {
-  padding: 10px;
-}
-</style>
+<style></style>
