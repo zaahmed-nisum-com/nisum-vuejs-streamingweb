@@ -9,6 +9,7 @@ import common from './common/store'
 import subscription from './subscription/store'
 import merchandise from './merchandise/store'
 import cart_checkout from './cart-checkout/store'
+import search from './search/store'
 import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
@@ -29,6 +30,7 @@ const store = () =>
       subscription,
       merchandise,
       cart_checkout,
+      search,
     },
     plugins: [vuexLocal.plugin],
   })

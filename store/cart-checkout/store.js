@@ -4,6 +4,7 @@ export default {
   state: {
     cart: {},
     orders: [],
+    tempOrderId: '',
   },
   getters: {},
   mutations: {
@@ -13,13 +14,14 @@ export default {
       } else {
         state.cart[data.itemId] = { ...data, count: 1 }
       }
+      state.tempOrderId = Math.floor(Math.random() * 10000000)
     },
     updateCart(state, data) {
       state.cart = { ...data }
     },
     placeOrder(state, data) {
       const order = {
-        id: Math.floor(Math.random() * 10000000),
+        id: state.tempOrderId,
         orderItem: { ...data.orderCart },
         createdDate: new Date(),
       }
