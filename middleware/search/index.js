@@ -4,7 +4,7 @@ export const searchMiddleware = {
   searchProduct: async (queryParam) => {
     try {
       const response = await fetch(
-        `http://localhost:8001/search/product?q=${queryParam}`,
+        `https://streaming-app-server.herokuapp.com/search/product?q=${queryParam}`,
         {
           method: 'GET',
         }
@@ -12,6 +12,7 @@ export const searchMiddleware = {
       const res = await response.json()
       if (response.status === 200) {
         store().commit('search/setSearchList', res.data)
+        window.location.reload(true)
       } else {
         store().commit('search/setSearchList', [])
       }

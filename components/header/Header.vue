@@ -57,7 +57,7 @@
             iconName="user-circle"
           />
         </div>
-        <NavBarDropDown />
+        <!-- <NavBarDropDown /> -->
         <div v-if="auth.isLogin" class="user-cart-icon">
           <div class="mini-cart-counter">
             <p class="m-0">{{ Object.keys(cartCounter).length }}</p>

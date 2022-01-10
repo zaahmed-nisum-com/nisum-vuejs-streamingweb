@@ -19,6 +19,42 @@
         </div>
       </div>
     </div>
+    <div class="flex flex-row flex-wrap m-2">
+      <div
+        v-for="(item, index) of searchList"
+        v-bind:key="index + 1"
+        class="p-2 border border-opacity-50 m-2 rounded"
+      >
+        <div>
+          <p class="text-xl">{{ item.title }}</p>
+        </div>
+        <img :src="item.picture" class="" />
+        <div>
+          <div class="d-flex flex-row">
+            <div
+              v-for="color of item.varients.colors"
+              v-bind:key="color"
+              class="p-2 m-2 border width-30 height-30 cursor-pointer"
+              :class="'bg-' + color"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="d-flex flex-row">
+            <div
+              v-for="size of item.varients.sizes"
+              v-bind:key="size"
+              class="p-3 m-2 border cursor-pointer"
+            >
+              <p class="m-0">{{ size }}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p>Price: {{item.price}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
